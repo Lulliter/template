@@ -1,5 +1,91 @@
 project:
-  title: "test"
+  title: "Template Quarto Website"
+  type: website
+  output-dir: docs
 
-editor: visual
+  render:
+    # Render all .qmd files
+    - "**/*.qmd"
+    # Exclude specific directories
+    - "!zzz_old/"
 
+execute:
+  freeze: auto  # Re-render only when source changes
+
+bibliography: bib/CARIPARMA.bib
+csl: bib/chicago-shortened-notes-bibliography.csl
+
+website:
+  repo-url: "https://github.com/Lulliter/template"
+  repo-actions: [edit, issue]
+
+  page-navigation: true
+
+  navbar:
+    pinned: true
+    background: "#033c55"
+    search: true
+    left:
+      - text: "Data"
+        file: analysis/data-final.qmd
+      - text: "Analysis"
+        file: analysis/hypotheses.qmd
+      - text: "Presentations"
+        file: presentations/index.qmd
+      - text: "Paper"
+        menu:
+          - file: analysis/paper.qmd
+
+    right:
+      - icon: github
+        aria-label: github
+        href: https://github.com/Lulliter/template
+
+
+  sidebar:
+    - title: "Data"
+      style: docked
+      background: "#005d82"
+      contents:
+        - section: "Data"
+          contents:
+            - analysis/data-final.qmd
+            - analysis/data-details.qmd
+        - section: "Methods"
+          contents:
+            - analysis/methods.qmd
+
+    - title: "Analysis"
+      contents:
+        - section: "Questions"
+          contents:
+            - analysis/hypotheses.qmd
+        - section: "Models"
+          contents:
+            - analysis/model-details.qmd
+
+    - title: "Empty space lol"
+
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} 2025 by Luisa M. Mimmi<br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)<br>
+      [View the source at {{< fa brands github >}} GitHub](https://github.com/andrewheiss/zany-zebra)
+
+format:
+  html:
+    theme:
+      - zephyr
+      - html/custom.scss
+    toc: true
+    toc-location: right
+    code-fold: true
+    code-tools: true
+    highlight-style: monokai
+
+language:
+  title-block-published: "Date"

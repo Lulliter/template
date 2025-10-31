@@ -1,6 +1,59 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+# ----------------- macOS Finder metadata
+.DS_Store
 
+# ----------------- QUARTO & WEBSITE
 /.quarto/
+/_freeze/
+/_site/
+#/docs/ # Here is where I *render* the site
+
+# ----------------- CONFIGURATION FILES (R & RSTUDIO)
+# History files
+.Rhistory
+.Rapp.history
+# Session Data files
+.RData
+# User-specific files
+.Ruserdata
+# RStudio files
+.Rproj.user/
+# R Environment Variables
+.Renviron
+# -----------------  knitr and R markdown default cache directories
+*_cache/
+/cache/
+*_files/
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
+
+# ----------------- GENERATED FILES
+# Generated outputs in root
+*.pdf
+*.docx
+*.html
+# --- NOT THIS THOUGH!!!!
+!README.HTML
+!README.html
+
+# ----------------- CONFIGURATION FILES (VS Code)
+# VS Code "workspace"
+# https://code.visualstudio.com/docs/editor/workspaces
+.vscode/*
+
+# ----------------- OLD OR "NOT YET" FILES
+zzz_old/*
+# ...
+
+# ----------------- SENSITIVE DATA FILES
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
+
+## ----------------- R PACKG FILES
+## Example code in package build process
+#*-Ex.R
+## Output files from R CMD build
+#/*.tar.gz
+## Output files from R CMD check
+#/*.Rcheck/
+

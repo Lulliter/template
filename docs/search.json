@@ -1,0 +1,88 @@
+[
+  {
+    "objectID": "analysis/data-details.html",
+    "href": "analysis/data-details.html",
+    "title": "Data details",
+    "section": "",
+    "text": "Code\nlibrary(tidyverse)\n# library(targets)\nlibrary(sf)\nlibrary(gt)\nlibrary(kableExtra)\nlibrary(lubridate)\n\nclrs_light &lt;- MetBrewer::met.brewer(\"Tiepolo\") %&gt;% colorspace::lighten(0.8)\n\n# Generated via random.org\nset.seed(2385)\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases\n\n\nHere’s an overview of these variables:\n\nmtcars %&gt;% \n  glimpse()\n## Rows: 32\n## Columns: 11\n## $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8, 16.4, 17.3, 15.2, 10.4, 10.4, 14.7, 32.…\n## $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8, 8, 8, 8, 4, 4, 4, 8, 6, 8, 4\n## $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 167.6, 167.6, 275.8, 275.8, 275.8, 472.0, …\n## $ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180, 205, 215, 230, 66, 52, 65, 97, 150, 15…\n## $ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92, 3.07, 3.07, 3.07, 2.93, 3.00, 3.23, 4.0…\n## $ wt   &lt;dbl&gt; 2.62, 2.88, 2.32, 3.21, 3.44, 3.46, 3.57, 3.19, 3.15, 3.44, 3.44, 4.07, 3.73, 3.78, 5.25, 5.42, 5.34, 2.2…\n## $ qsec &lt;dbl&gt; 16.5, 17.0, 18.6, 19.4, 17.0, 20.2, 15.8, 20.0, 22.9, 18.3, 18.9, 17.4, 17.6, 18.0, 18.0, 17.8, 17.4, 19.…\n## $ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1\n## $ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1\n## $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 4\n## $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2, 2, 4, 2, 1, 2, 2, 4, 6, 8, 2\n\nAnd here’s an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:\n\n\nCode\nmtcars %&gt;%\n  gt()  #%&gt;% \n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\n21.0\n6\n160.0\n110\n3.90\n2.62\n16.5\n0\n1\n4\n4\n\n\n21.0\n6\n160.0\n110\n3.90\n2.88\n17.0\n0\n1\n4\n4\n\n\n22.8\n4\n108.0\n93\n3.85\n2.32\n18.6\n1\n1\n4\n1\n\n\n21.4\n6\n258.0\n110\n3.08\n3.21\n19.4\n1\n0\n3\n1\n\n\n18.7\n8\n360.0\n175\n3.15\n3.44\n17.0\n0\n0\n3\n2\n\n\n18.1\n6\n225.0\n105\n2.76\n3.46\n20.2\n1\n0\n3\n1\n\n\n14.3\n8\n360.0\n245\n3.21\n3.57\n15.8\n0\n0\n3\n4\n\n\n24.4\n4\n146.7\n62\n3.69\n3.19\n20.0\n1\n0\n4\n2\n\n\n22.8\n4\n140.8\n95\n3.92\n3.15\n22.9\n1\n0\n4\n2\n\n\n19.2\n6\n167.6\n123\n3.92\n3.44\n18.3\n1\n0\n4\n4\n\n\n17.8\n6\n167.6\n123\n3.92\n3.44\n18.9\n1\n0\n4\n4\n\n\n16.4\n8\n275.8\n180\n3.07\n4.07\n17.4\n0\n0\n3\n3\n\n\n17.3\n8\n275.8\n180\n3.07\n3.73\n17.6\n0\n0\n3\n3\n\n\n15.2\n8\n275.8\n180\n3.07\n3.78\n18.0\n0\n0\n3\n3\n\n\n10.4\n8\n472.0\n205\n2.93\n5.25\n18.0\n0\n0\n3\n4\n\n\n10.4\n8\n460.0\n215\n3.00\n5.42\n17.8\n0\n0\n3\n4\n\n\n14.7\n8\n440.0\n230\n3.23\n5.34\n17.4\n0\n0\n3\n4\n\n\n32.4\n4\n78.7\n66\n4.08\n2.20\n19.5\n1\n1\n4\n1\n\n\n30.4\n4\n75.7\n52\n4.93\n1.61\n18.5\n1\n1\n4\n2\n\n\n33.9\n4\n71.1\n65\n4.22\n1.83\n19.9\n1\n1\n4\n1\n\n\n21.5\n4\n120.1\n97\n3.70\n2.46\n20.0\n1\n0\n3\n1\n\n\n15.5\n8\n318.0\n150\n2.76\n3.52\n16.9\n0\n0\n3\n2\n\n\n15.2\n8\n304.0\n150\n3.15\n3.44\n17.3\n0\n0\n3\n2\n\n\n13.3\n8\n350.0\n245\n3.73\n3.84\n15.4\n0\n0\n3\n4\n\n\n19.2\n8\n400.0\n175\n3.08\n3.85\n17.1\n0\n0\n3\n2\n\n\n27.3\n4\n79.0\n66\n4.08\n1.94\n18.9\n1\n1\n4\n1\n\n\n26.0\n4\n120.3\n91\n4.43\n2.14\n16.7\n0\n1\n5\n2\n\n\n30.4\n4\n95.1\n113\n3.77\n1.51\n16.9\n1\n1\n5\n2\n\n\n15.8\n8\n351.0\n264\n4.22\n3.17\n14.5\n0\n1\n5\n4\n\n\n19.7\n6\n145.0\n175\n3.62\n2.77\n15.5\n0\n1\n5\n6\n\n\n15.0\n8\n301.0\n335\n3.54\n3.57\n14.6\n0\n1\n5\n8\n\n\n21.4\n4\n121.0\n109\n4.11\n2.78\n18.6\n1\n1\n4\n2\n\n\n\n\n\n\n\nCode\n  # cols_width(country_name ~ px(250),\n  #            iso3 ~ px(60)) %&gt;% \n  # data_color(columns = contains(\"derogation\"),\n  #            fn = scales::col_factor(c(clrs_light[1], clrs_light[8]), \n  #                                    domain = c(FALSE, TRUE))) %&gt;% \n  # opt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)",
+    "crumbs": [
+      "Data",
+      "Data details"
+    ]
+  },
+  {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "test",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "test.html#quarto",
+    "href": "test.html#quarto",
+    "title": "test",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nCode\n1 + 1\n\n\n[1] 2"
+  },
+  {
+    "objectID": "analysis/paper.html",
+    "href": "analysis/paper.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  },
+  {
+    "objectID": "analysis/methods.html",
+    "href": "analysis/methods.html",
+    "title": "",
+    "section": "",
+    "text": "Code",
+    "crumbs": [
+      "Data",
+      "Methods",
+      "methods.html"
+    ]
+  },
+  {
+    "objectID": "analysis/data-final.html",
+    "href": "analysis/data-final.html",
+    "title": "",
+    "section": "",
+    "text": "Code",
+    "crumbs": [
+      "Data",
+      "data-final.html"
+    ]
+  },
+  {
+    "objectID": "analysis/hypotheses.html",
+    "href": "analysis/hypotheses.html",
+    "title": "",
+    "section": "",
+    "text": "Code",
+    "crumbs": [
+      "Analysis",
+      "Questions",
+      "hypotheses.html"
+    ]
+  },
+  {
+    "objectID": "analysis/model-details.html",
+    "href": "analysis/model-details.html",
+    "title": "",
+    "section": "",
+    "text": "Code",
+    "crumbs": [
+      "Analysis",
+      "Models",
+      "model-details.html"
+    ]
+  },
+  {
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "",
+    "section": "",
+    "text": "Code"
+  }
+]
