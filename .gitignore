@@ -29,9 +29,10 @@
 
 # ----------------- GENERATED FILES
 # Generated outputs in root
-*.pdf
-*.docx
-*.html
+#*.pdf
+#*.docx
+#*.html
+
 # --- NOT THIS THOUGH!!!!
 !README.HTML
 !README.html
