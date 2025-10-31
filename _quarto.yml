@@ -1,5 +1,4 @@
 project:
-  title: "Template Quarto Website"
   type: website
   output-dir: docs
 
@@ -16,6 +15,8 @@ bibliography: bib/CARIPARMA.bib
 csl: bib/chicago-shortened-notes-bibliography.csl
 
 website:
+  title: "Template Quarto Website"
+  site-url: "https://lulliter.github.io/template/"
   repo-url: "https://github.com/Lulliter/template"
   repo-actions: [edit, issue]
 

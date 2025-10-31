@@ -17,7 +17,19 @@ quarto add quarto-ext/mermaid
 quarto add quarto-ext/openai
 ```
 
-
 ## Zotero
 
 For `*.bib` files collections to be exported (AND KEPT UPDATED) from Zotero, I need to install the plogin *Better BibTeX* for Zotero (find instrucitions) which will offer the "keep updated" option when exporting collections.
+
+
+## XQuartz 
+XQuartz (il sistema X Window System (X11) per macOS) necessario per i dispositivi grafici o i grafici interattivi in R.
+
+```bash
+brew install --cask xquartz
+```
+
+## Deploying on GH pages
+
++ add `.nojeckyll` file to the root of the gh-pages branch
++ set the site-url in `_quarto.yml` file: 
