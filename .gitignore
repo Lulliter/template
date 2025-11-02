@@ -58,3 +58,5 @@ zzz_old/*
 ## Output files from R CMD check
 #/*.Rcheck/
 
+
+**/*.quarto_ipynb

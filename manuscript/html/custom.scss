@@ -1,0 +1,30 @@
+/*-- scss:rules --*/
+
+#title-block-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
+
+.MathJax, .MathJax_Display {
+  font-size: 100% !important;
+}
+
+.thanks-section {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 2em;
+  padding-bottom: 2em;
+}
+
+thead th {
+  text-transform: none;
+}
+
+// kableExtra or modelsummary or Quarto or *something* injects `border-bottom: 0` 
+// into the inline <table style=XXX> for modelsummary tables when there are notes 
+// with multiple lines (most esoteric bug ever!). This nukes the light grey bottom 
+// border color that Bootstrap uses, which makes the tables ugly. So this class 
+// forces the light grey border back on.
+.light-border {
+  border-bottom-color: var(--bs-gray-300) !important;
+}

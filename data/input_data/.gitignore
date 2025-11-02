@@ -1,0 +1,5 @@
+# Only commit the core data files
+
+# Selecting
+this_yes/*
+!this_yes/this_no.rds

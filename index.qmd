@@ -1,0 +1,34 @@
+---
+title: "Template for Quarto Projects"
+author:
+- name: Luisa M. Mimmi
+  affiliation: Fondazione Cariparma
+  orcid: 0000-0002-2244-8282
+  url: https://luisamimmi.org/
+  email: mimmi@fondazionecrp.it
+# - name: Audrey L. Comstock
+#   affiliation: Arizona State University
+#   orcid: 0000-0003-1772-5350
+#   url: https://audreylcomstock.weebly.com/
+#   email: audrey.comstock@asu.edu
+# - name: Andrew Heiss
+#   affiliation: Georgia State University
+#   orcid: 0000-0002-3948-3914
+#   url: https://www.andrewheiss.com
+#   email: aheiss@gsu.edu
+format:
+  html:
+    code-tools: false
+    toc: false
+sidebar: false
+---
+
+<!-- ```{r echo=FALSE} -->
+<!-- yaml_metadata <- rmarkdown::yaml_front_matter(here::here("manuscript", "manuscript.qmd")) -->
+<!-- title <- yaml_metadata$title -->
+<!-- abstract <- yaml_metadata$abstract -->
+<!-- ``` -->
+
+<!-- ### Abstract -->
+
+<!-- `r abstract` -->
