@@ -206,6 +206,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!-- ```{r include=FALSE} -->
+<!-- # Add these final data files as targets dependencies -->
+<!-- library(targets) -->
+<!-- tar_load(c(data_weekly_stata, data_weekly_csv, data_weekly_rds, -->
+<!--            data_quarterly_stata, data_quarterly_csv, data_quarterly_rds)) -->
+<!-- tar_load(c(data_weekly_stata_website, data_weekly_csv_website, data_weekly_rds_website, -->
+<!--            data_quarterly_stata_website, data_quarterly_csv_website, data_quarterly_rds_website)) -->
+<!-- ``` -->
+<!-- The cleaned data is available in three formats: -->
+<!-- - CSV file for any program -->
+<!-- - `.rds` file for R <span class="small">(load with `df <- readRDS("weekly_panel.rds")`)</span> -->
+<!-- - `.dta` file for Stata <span class="small">(load with `use "weekly_panel.dta"`)</span> -->
+<!-- ## Weekly data -->
+<!-- <a class="btn btn-primary btn-sm" target="_blank" href="data/weekly_panel.csv"> &ensp;<span class="font-monospace">weekly_panel.csv</span></a> &emsp; <a class="btn btn-success btn-sm" target="_blank" href="data/weekly_panel.rds"> &ensp;<span class="font-monospace">weekly_panel.rds</span></a> &emsp; <a class="btn btn-warning btn-sm" target="_blank" href="data/weekly_panel.dta"> &ensp;<span class="font-monospace">weekly_panel.dta</span></a> -->
+<!-- ## Quarterly data -->
+<!-- <a class="btn btn-primary btn-sm" target="_blank" href="data/quarterly_panel.csv"> &ensp;<span class="font-monospace">quarterly_panel.csv</span></a> &emsp; <a class="btn btn-success btn-sm" target="_blank" href="data/quarterly_panel.rds"> &ensp;<span class="font-monospace">quarterly_panel.rds</span></a> &emsp; <a class="btn btn-warning btn-sm" target="_blank" href="data/quarterly_panel.dta"> &ensp;<span class="font-monospace">quarterly_panel.dta</span></a> -->
 
 
 

@@ -6,13 +6,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Suparna Chaudhry">
-<meta name="author" content="Audrey L. Comstock">
-<meta name="author" content="Andrew Heiss">
+<meta name="author" content="Name S. Surname">
+<meta name="author" content="Luisa M. Mimmi">
 <meta name="dcterms.date" content="2024-07-25">
-<meta name="keywords" content="human rights, treaty derogations, COVID-19, emergency policies">
+<meta name="keywords" content="stars, wars">
 
-<title>Pandemic Pass? Treaty Derogations and Human Rights Practices During COVID-19</title>
+<title>Some illustrative title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -60,6 +59,8 @@ div.csl-indent {
 <script src="manuscript_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="manuscript_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="manuscript_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="manuscript_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+<script src="manuscript_files/libs/tabwid-1.1.3/tabwid.js"></script>
 
 
 </head>
@@ -73,8 +74,16 @@ div.csl-indent {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">2</span> Conclusion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">3</span> References</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">2</span> Data</a></li>
+  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables"><span class="header-section-number">3</span> Tables</a>
+  <ul class="collapse">
+  <li><a href="#flextable" id="toc-flextable" class="nav-link" data-scroll-target="#flextable"><span class="header-section-number">3.1</span> Flextable</a></li>
+  <li><a href="#flextable-with-my-function" id="toc-flextable-with-my-function" class="nav-link" data-scroll-target="#flextable-with-my-function"><span class="header-section-number">3.2</span> Flextable with my function</a></li>
+  <li><a href="#kable" id="toc-kable" class="nav-link" data-scroll-target="#kable"><span class="header-section-number">3.3</span> Kable</a></li>
+  <li><a href="#gt-table" id="toc-gt-table" class="nav-link" data-scroll-target="#gt-table"><span class="header-section-number">3.4</span> GT table</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">4</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="manuscript.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="manuscript.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
 </div>
@@ -82,7 +91,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Pandemic Pass? Treaty Derogations and Human Rights Practices During COVID-19</h1>
+<h1 class="title">Some illustrative title</h1>
 <p class="subtitle lead">(Research note)</p>
 </div>
 
@@ -92,27 +101,19 @@ div.csl-indent {
   <div class="quarto-title-meta-heading">Affiliations</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.suparnachaudhry.com/">Suparna Chaudhry</a> <a href="mailto:schaudhry@lclark.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-3506-7590" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author"><a href="https://example.com/">Name S. Surname</a> <a href="mailto:fakeemail@uni.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0001-2345-6789" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Lewis and Clark College
+            Some University
           </p>
       </div>
     <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://audreylcomstock.weebly.com/">Audrey L. Comstock</a> <a href="mailto:audrey.comstock@asu.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0003-1772-5350" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author"><a href="https://luisamimmi.org/">Luisa M. Mimmi</a> <a href="mailto:mimmi@fondazionecrp.it" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-2244-8282" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
-            Arizona State University
-          </p>
-      </div>
-    <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.andrewheiss.com">Andrew Heiss</a> <a href="mailto:aheiss@gsu.edu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-3948-3914" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            Georgia State University
+            Fondazione Cariparma
           </p>
       </div>
   </div>
@@ -133,14 +134,14 @@ div.csl-indent {
 <div>
   <div class="abstract">
     <div class="block-title">Abstract</div>
-    <p>This research note asks whether…</p>
+    <p>This is the ABSTRACT which is in the YAML header…….</p>
   </div>
 </div>
 
 <div>
   <div class="keywords">
     <div class="block-title">Keywords</div>
-    <p>human rights, treaty derogations, COVID-19, emergency policies</p>
+    <p>stars, wars</p>
   </div>
 </div>
 
@@ -150,13 +151,730 @@ div.csl-indent {
 <section id="introduction" class="level1 hide" data-number="1">
 <h1 class="hide" data-number="1"><span class="header-section-number">1</span> Introduction</h1>
 <p>Did states misuse international emergency provisions during the COVID-19 crisis to justify human rights abuse? As said by <span class="citation" data-cites="ministerodellavoroedellepolitichesocialiDECRETO23Luglio2019">(<a href="#ref-ministerodellavoroedellepolitichesocialiDECRETO23Luglio2019" role="doc-biblioref">MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI 12 sett 2019</a>)</span></p>
+<p>Here’s a footnote.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </section>
-<section id="conclusion" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Conclusion</h1>
+<section id="data" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Data</h1>
+<p>Here’s an overview of these variables.</p>
+</section>
+<section id="tables" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Tables</h1>
+<p>Comparing how different functions create tables: I am especially worried about how they render in Word output.</p>
+<section id="flextable" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="flextable"><span class="header-section-number">3.1</span> Flextable</h2>
+<div class="cell" data-tbl-cap="flextable">
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-c7bb11ec{}.cl-c7b7be48{font-family:'Helvetica';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c7b7be52{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c7b9008c{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-c7b90fe6{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90fe7{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90ff0{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90ff1{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90ffa{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90ffb{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b90ffc{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91004{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91005{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91006{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9100e{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9100f{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91010{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91018{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91019{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9101a{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91022{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91023{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91024{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9102c{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9102d{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9102e{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9102f{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91036{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91037{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91040{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91041{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91042{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9104a{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9104b{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9104c{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91054{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91055{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91056{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91057{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 0.75pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9105e{width:1.627in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b9105f{width:1.202in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91060{width:1.049in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91068{width:0.744in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91069{width:1.1in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91072{width:0.846in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c7b91073{width:10.11in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0.75pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c7bb11ec"><caption><p>flextable</p></caption><thead><tr style="overflow-wrap:break-word;"><th class="cl-c7b90fe6"><p class="cl-c7b9008c"><span class="cl-c7b7be48">name</span></p></th><th class="cl-c7b90fe7"><p class="cl-c7b9008c"><span class="cl-c7b7be48">hair_color</span></p></th><th class="cl-c7b90ff0"><p class="cl-c7b9008c"><span class="cl-c7b7be48">skin_color</span></p></th><th class="cl-c7b90ff1"><p class="cl-c7b9008c"><span class="cl-c7b7be48">sex</span></p></th><th class="cl-c7b90ffa"><p class="cl-c7b9008c"><span class="cl-c7b7be48">homeworld</span></p></th><th class="cl-c7b90ffb"><p class="cl-c7b9008c"><span class="cl-c7b7be48">species</span></p></th><th class="cl-c7b90ffc"><p class="cl-c7b9008c"><span class="cl-c7b7be48">films</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c7b91004"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Luke Skywalker</span></p></td><td class="cl-c7b91005"><p class="cl-c7b9008c"><span class="cl-c7b7be52">blond</span></p></td><td class="cl-c7b91006"><p class="cl-c7b9008c"><span class="cl-c7b7be52">fair</span></p></td><td class="cl-c7b9100e"><p class="cl-c7b9008c"><span class="cl-c7b7be52">male</span></p></td><td class="cl-c7b9100f"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b91010"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b91018"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">C-3PO</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52"></span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">gold</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">none</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Droid</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">R2-D2</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52"></span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">white, blue</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">none</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Naboo</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Droid</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Darth Vader</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52">none</span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">white</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">male</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Leia Organa</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52">brown</span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">light</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">female</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Alderaan</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Owen Lars</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52">brown, grey</span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">light</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">male</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b91019"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Beru Whitesun Lars</span></p></td><td class="cl-c7b9101a"><p class="cl-c7b9008c"><span class="cl-c7b7be52">brown</span></p></td><td class="cl-c7b91022"><p class="cl-c7b9008c"><span class="cl-c7b7be52">light</span></p></td><td class="cl-c7b91023"><p class="cl-c7b9008c"><span class="cl-c7b7be52">female</span></p></td><td class="cl-c7b91024"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b9102c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b9102d"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b9102e"><p class="cl-c7b9008c"><span class="cl-c7b7be52">R5-D4</span></p></td><td class="cl-c7b9102f"><p class="cl-c7b9008c"><span class="cl-c7b7be52"></span></p></td><td class="cl-c7b91036"><p class="cl-c7b9008c"><span class="cl-c7b7be52">white, red</span></p></td><td class="cl-c7b91037"><p class="cl-c7b9008c"><span class="cl-c7b7be52">none</span></p></td><td class="cl-c7b91040"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b91041"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Droid</span></p></td><td class="cl-c7b91042"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b9104a"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Biggs Darklighter</span></p></td><td class="cl-c7b9104b"><p class="cl-c7b9008c"><span class="cl-c7b7be52">black</span></p></td><td class="cl-c7b9104c"><p class="cl-c7b9008c"><span class="cl-c7b7be52">light</span></p></td><td class="cl-c7b91054"><p class="cl-c7b9008c"><span class="cl-c7b7be52">male</span></p></td><td class="cl-c7b91055"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Tatooine</span></p></td><td class="cl-c7b91056"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b91057"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c7b9105e"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Obi-Wan Kenobi</span></p></td><td class="cl-c7b9105f"><p class="cl-c7b9008c"><span class="cl-c7b7be52">auburn, white</span></p></td><td class="cl-c7b91060"><p class="cl-c7b9008c"><span class="cl-c7b7be52">fair</span></p></td><td class="cl-c7b91068"><p class="cl-c7b9008c"><span class="cl-c7b7be52">male</span></p></td><td class="cl-c7b91069"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Stewjon</span></p></td><td class="cl-c7b91072"><p class="cl-c7b9008c"><span class="cl-c7b7be52">Human</span></p></td><td class="cl-c7b91073"><p class="cl-c7b9008c"><span class="cl-c7b7be52">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="flextable-with-my-function" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="flextable-with-my-function"><span class="header-section-number">3.2</span> Flextable with my function</h2>
+<div class="cell" data-tbl-cap="flextable with custom function">
+<div class="cell-output-display">
+<div class="tabwid tabwid_left"><style>.cl-c82f65c4{table-layout:auto;width:100%;}.cl-c82c9b78{font-family:'Roboto Condensed';font-size:10pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c82c9b82{font-family:'Roboto Condensed';font-size:10pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-c82daedc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:2pt;padding-top:2pt;padding-left:4pt;padding-right:4pt;line-height: 1;background-color:transparent;}.cl-c82dba9e{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaa8{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaa9{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaaa{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaab{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbab2{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbab3{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbab4{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbab5{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbabc{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbabd{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbabe{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbabf{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbac6{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbac7{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbad0{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbad1{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbad2{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbada{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbadb{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbadc{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbae4{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbae5{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbae6{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaee{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaef{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaf0{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaf8{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbaf9{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbafa{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbb02{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbb03{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbb0c{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbb0d{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-c82dbb0e{background-color:rgba(242, 242, 242, 1.00);vertical-align: middle;border-bottom: 0.5pt solid rgba(166, 166, 166, 1.00);border-top: 0.5pt solid rgba(166, 166, 166, 1.00);border-left: 0.5pt solid rgba(166, 166, 166, 1.00);border-right: 0.5pt solid rgba(166, 166, 166, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-c82f65c4"><caption><p>flextable with custom function</p></caption><thead><tr style="overflow-wrap:break-word;"><th class="cl-c82dba9e"><p class="cl-c82daedc"><span class="cl-c82c9b78">name</span></p></th><th class="cl-c82dbaa8"><p class="cl-c82daedc"><span class="cl-c82c9b78">hair_color</span></p></th><th class="cl-c82dbaa9"><p class="cl-c82daedc"><span class="cl-c82c9b78">skin_color</span></p></th><th class="cl-c82dbaaa"><p class="cl-c82daedc"><span class="cl-c82c9b78">sex</span></p></th><th class="cl-c82dbaab"><p class="cl-c82daedc"><span class="cl-c82c9b78">homeworld</span></p></th><th class="cl-c82dbab2"><p class="cl-c82daedc"><span class="cl-c82c9b78">species</span></p></th><th class="cl-c82dbab3"><p class="cl-c82daedc"><span class="cl-c82c9b78">films</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-c82dbab4"><p class="cl-c82daedc"><span class="cl-c82c9b82">Luke Skywalker</span></p></td><td class="cl-c82dbab5"><p class="cl-c82daedc"><span class="cl-c82c9b82">blond</span></p></td><td class="cl-c82dbabc"><p class="cl-c82daedc"><span class="cl-c82c9b82">fair</span></p></td><td class="cl-c82dbabd"><p class="cl-c82daedc"><span class="cl-c82c9b82">male</span></p></td><td class="cl-c82dbabe"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbabf"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbac6"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">C-3PO</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82"></span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">gold</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">none</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Droid</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">R2-D2</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82"></span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">white, blue</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">none</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Naboo</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Droid</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">Darth Vader</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82">none</span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">white</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">male</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">Leia Organa</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82">brown</span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">light</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">female</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Alderaan</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">Owen Lars</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82">brown, grey</span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">light</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">male</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">Beru Whitesun Lars</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82">brown</span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">light</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">female</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, Attack of the Clones, Revenge of the Sith</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbae4"><p class="cl-c82daedc"><span class="cl-c82c9b82">R5-D4</span></p></td><td class="cl-c82dbae5"><p class="cl-c82daedc"><span class="cl-c82c9b82"></span></p></td><td class="cl-c82dbae6"><p class="cl-c82daedc"><span class="cl-c82c9b82">white, red</span></p></td><td class="cl-c82dbaee"><p class="cl-c82daedc"><span class="cl-c82c9b82">none</span></p></td><td class="cl-c82dbaef"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbaf0"><p class="cl-c82daedc"><span class="cl-c82c9b82">Droid</span></p></td><td class="cl-c82dbaf8"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbaf9"><p class="cl-c82daedc"><span class="cl-c82c9b82">Biggs Darklighter</span></p></td><td class="cl-c82dbafa"><p class="cl-c82daedc"><span class="cl-c82c9b82">black</span></p></td><td class="cl-c82dbb02"><p class="cl-c82daedc"><span class="cl-c82c9b82">light</span></p></td><td class="cl-c82dbb03"><p class="cl-c82daedc"><span class="cl-c82c9b82">male</span></p></td><td class="cl-c82dbb0c"><p class="cl-c82daedc"><span class="cl-c82c9b82">Tatooine</span></p></td><td class="cl-c82dbb0d"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbb0e"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-c82dbac7"><p class="cl-c82daedc"><span class="cl-c82c9b82">Obi-Wan Kenobi</span></p></td><td class="cl-c82dbad0"><p class="cl-c82daedc"><span class="cl-c82c9b82">auburn, white</span></p></td><td class="cl-c82dbad1"><p class="cl-c82daedc"><span class="cl-c82c9b82">fair</span></p></td><td class="cl-c82dbad2"><p class="cl-c82daedc"><span class="cl-c82c9b82">male</span></p></td><td class="cl-c82dbada"><p class="cl-c82daedc"><span class="cl-c82c9b82">Stewjon</span></p></td><td class="cl-c82dbadb"><p class="cl-c82daedc"><span class="cl-c82c9b82">Human</span></p></td><td class="cl-c82dbadc"><p class="cl-c82daedc"><span class="cl-c82c9b82">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="kable" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="kable"><span class="header-section-number">3.3</span> Kable</h2>
+<div class="cell" data-tbl-cap="kableExtra">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>kableExtra</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">hair_color</th>
+<th style="text-align: left;">skin_color</th>
+<th style="text-align: left;">sex</th>
+<th style="text-align: left;">homeworld</th>
+<th style="text-align: left;">species</th>
+<th style="text-align: left;">films</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Luke Skywalker</td>
+<td style="text-align: left;">blond</td>
+<td style="text-align: left;">fair</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">C-3PO</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">gold</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Droid</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R2-D2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">white, blue</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">Naboo</td>
+<td style="text-align: left;">Droid</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Darth Vader</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">white</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Leia Organa</td>
+<td style="text-align: left;">brown</td>
+<td style="text-align: left;">light</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">Alderaan</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Owen Lars</td>
+<td style="text-align: left;">brown, grey</td>
+<td style="text-align: left;">light</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Beru Whitesun Lars</td>
+<td style="text-align: left;">brown</td>
+<td style="text-align: left;">light</td>
+<td style="text-align: left;">female</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R5-D4</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">white, red</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Droid</td>
+<td style="text-align: left;">A New Hope</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Biggs Darklighter</td>
+<td style="text-align: left;">black</td>
+<td style="text-align: left;">light</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">Tatooine</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obi-Wan Kenobi</td>
+<td style="text-align: left;">auburn, white</td>
+<td style="text-align: left;">fair</td>
+<td style="text-align: left;">male</td>
+<td style="text-align: left;">Stewjon</td>
+<td style="text-align: left;">Human</td>
+<td style="text-align: left;">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="gt-table" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="gt-table"><span class="header-section-number">3.4</span> GT table</h2>
+<p>Word support for gt is limited; the safest comparison is to render it to an image and embed it.</p>
+<div class="cell" data-tbl-cap="gt (embedded as image for DOCX)">
+<div class="cell-output-display">
+<div id="lmkyqlkyzz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lmkyqlkyzz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#lmkyqlkyzz thead, #lmkyqlkyzz tbody, #lmkyqlkyzz tfoot, #lmkyqlkyzz tr, #lmkyqlkyzz td, #lmkyqlkyzz th {
+  border-style: none;
+}
+
+#lmkyqlkyzz p {
+  margin: 0;
+  padding: 0;
+}
+
+#lmkyqlkyzz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 10px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#lmkyqlkyzz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#lmkyqlkyzz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#lmkyqlkyzz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#lmkyqlkyzz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#lmkyqlkyzz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#lmkyqlkyzz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#lmkyqlkyzz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#lmkyqlkyzz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#lmkyqlkyzz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#lmkyqlkyzz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#lmkyqlkyzz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#lmkyqlkyzz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#lmkyqlkyzz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#lmkyqlkyzz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lmkyqlkyzz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#lmkyqlkyzz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#lmkyqlkyzz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#lmkyqlkyzz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lmkyqlkyzz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#lmkyqlkyzz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lmkyqlkyzz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#lmkyqlkyzz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lmkyqlkyzz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#lmkyqlkyzz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#lmkyqlkyzz .gt_left {
+  text-align: left;
+}
+
+#lmkyqlkyzz .gt_center {
+  text-align: center;
+}
+
+#lmkyqlkyzz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#lmkyqlkyzz .gt_font_normal {
+  font-weight: normal;
+}
+
+#lmkyqlkyzz .gt_font_bold {
+  font-weight: bold;
+}
+
+#lmkyqlkyzz .gt_font_italic {
+  font-style: italic;
+}
+
+#lmkyqlkyzz .gt_super {
+  font-size: 65%;
+}
+
+#lmkyqlkyzz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#lmkyqlkyzz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#lmkyqlkyzz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#lmkyqlkyzz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#lmkyqlkyzz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#lmkyqlkyzz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#lmkyqlkyzz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#lmkyqlkyzz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#lmkyqlkyzz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<caption>gt (embedded as image for DOCX)</caption>
+<thead>
+<tr class="gt_col_headings header">
+<th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">name</th>
+<th id="hair_color" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">hair_color</th>
+<th id="skin_color" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">skin_color</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">sex</th>
+<th id="homeworld" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">homeworld</th>
+<th id="species" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">species</th>
+<th id="films" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">films</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">Luke Skywalker</td>
+<td class="gt_row gt_left" headers="hair_color">blond</td>
+<td class="gt_row gt_left" headers="skin_color">fair</td>
+<td class="gt_row gt_left" headers="sex">male</td>
+<td class="gt_row gt_left" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left" headers="species">Human</td>
+<td class="gt_row gt_left" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">C-3PO</td>
+<td class="gt_row gt_left gt_striped" headers="hair_color"></td>
+<td class="gt_row gt_left gt_striped" headers="skin_color">gold</td>
+<td class="gt_row gt_left gt_striped" headers="sex">none</td>
+<td class="gt_row gt_left gt_striped" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left gt_striped" headers="species">Droid</td>
+<td class="gt_row gt_left gt_striped" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">R2-D2</td>
+<td class="gt_row gt_left" headers="hair_color"></td>
+<td class="gt_row gt_left" headers="skin_color">white, blue</td>
+<td class="gt_row gt_left" headers="sex">none</td>
+<td class="gt_row gt_left" headers="homeworld">Naboo</td>
+<td class="gt_row gt_left" headers="species">Droid</td>
+<td class="gt_row gt_left" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">Darth Vader</td>
+<td class="gt_row gt_left gt_striped" headers="hair_color">none</td>
+<td class="gt_row gt_left gt_striped" headers="skin_color">white</td>
+<td class="gt_row gt_left gt_striped" headers="sex">male</td>
+<td class="gt_row gt_left gt_striped" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left gt_striped" headers="species">Human</td>
+<td class="gt_row gt_left gt_striped" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">Leia Organa</td>
+<td class="gt_row gt_left" headers="hair_color">brown</td>
+<td class="gt_row gt_left" headers="skin_color">light</td>
+<td class="gt_row gt_left" headers="sex">female</td>
+<td class="gt_row gt_left" headers="homeworld">Alderaan</td>
+<td class="gt_row gt_left" headers="species">Human</td>
+<td class="gt_row gt_left" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">Owen Lars</td>
+<td class="gt_row gt_left gt_striped" headers="hair_color">brown, grey</td>
+<td class="gt_row gt_left gt_striped" headers="skin_color">light</td>
+<td class="gt_row gt_left gt_striped" headers="sex">male</td>
+<td class="gt_row gt_left gt_striped" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left gt_striped" headers="species">Human</td>
+<td class="gt_row gt_left gt_striped" headers="films">A New Hope, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">Beru Whitesun Lars</td>
+<td class="gt_row gt_left" headers="hair_color">brown</td>
+<td class="gt_row gt_left" headers="skin_color">light</td>
+<td class="gt_row gt_left" headers="sex">female</td>
+<td class="gt_row gt_left" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left" headers="species">Human</td>
+<td class="gt_row gt_left" headers="films">A New Hope, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">R5-D4</td>
+<td class="gt_row gt_left gt_striped" headers="hair_color"></td>
+<td class="gt_row gt_left gt_striped" headers="skin_color">white, red</td>
+<td class="gt_row gt_left gt_striped" headers="sex">none</td>
+<td class="gt_row gt_left gt_striped" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left gt_striped" headers="species">Droid</td>
+<td class="gt_row gt_left gt_striped" headers="films">A New Hope</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">Biggs Darklighter</td>
+<td class="gt_row gt_left" headers="hair_color">black</td>
+<td class="gt_row gt_left" headers="skin_color">light</td>
+<td class="gt_row gt_left" headers="sex">male</td>
+<td class="gt_row gt_left" headers="homeworld">Tatooine</td>
+<td class="gt_row gt_left" headers="species">Human</td>
+<td class="gt_row gt_left" headers="films">A New Hope</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">Obi-Wan Kenobi</td>
+<td class="gt_row gt_left gt_striped" headers="hair_color">auburn, white</td>
+<td class="gt_row gt_left gt_striped" headers="skin_color">fair</td>
+<td class="gt_row gt_left gt_striped" headers="sex">male</td>
+<td class="gt_row gt_left gt_striped" headers="homeworld">Stewjon</td>
+<td class="gt_row gt_left gt_striped" headers="species">Human</td>
+<td class="gt_row gt_left gt_striped" headers="films">A New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In many cases</p>
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Conclusion</h1>
 <p>Blah blah blah.</p>
 </section>
-<section id="references" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> References</h1>
+<section id="references" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-ministerodellavoroedellepolitichesocialiDECRETO23Luglio2019" class="csl-entry" role="listitem">
 MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI. 12 sett 2019. <span>“<span>DECRETO</span> 23 Luglio 2019.”</span> <a href="https://www.lavoro.gov.it/documenti-e-norme/normative/Documents/2019/DM-23072019-Linee-guida-realizzazione-sistemi-valutazione-impatto-sociale-attivita-svolte-dagli-ETS.pdf">https://www.lavoro.gov.it/documenti-e-norme/normative/Documents/2019/DM-23072019-Linee-guida-realizzazione-sistemi-valutazione-impatto-sociale-attivita-svolte-dagli-ETS.pdf</a>.
@@ -164,7 +882,13 @@ MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI. 12 sett 2019. <span>“<span>DEC
 </div>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This is the text of the footnote.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

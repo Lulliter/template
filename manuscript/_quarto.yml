@@ -11,131 +11,19 @@ project:
 keep-md: false
 
 format:
+# Nice HTML output
   html:
     toc: true
     number-sections: true
+# Nice PDF output
   pdf:
     toc: true
     number-sections: true
+# Nice Word output
   docx:
     toc: true
+    reference-doc: "assets/custom-reference-doc.docx"
 
-##------ AH ----------------
-# format:
-#   # Nice HTML output
-#   html:
-#     toc: true
-#     include-in-header:
-#       - text: |
-#           <style type="text/css">
-#           h2.hide {
-#             display: none;
-#           }
-#           </style>
-#     language:
-#       title-block-published: "Latest version"
-#     format-links:
-#       - html
-#       - format: hikmah-pdf
-#         text: PDF
-#         icon: file-pdf
-#       - format: hikmah-manuscript-pdf+ms
-#         text: Manuscripty PDF
-#         icon: file-pdf
-#       - format: hikmah-manuscript-docx
-#         text: Manuscripty Word
-#         icon: file-word
-#     shift-heading-level-by: 1
-#     theme:
-#       - zephyr
-#       - html/custom.scss
-#     citeproc: false
-#     filters:
-#       - at: pre-render
-#         path: "_extensions/andrewheiss/wordcount/citeproc.lua"
-#       - at: pre-render
-#         path: "_extensions/andrewheiss/wordcount/wordcount.lua"
-#     knitr:
-#       opts_chunk:
-#         dev: "ragg_png"
-#         dpi: 300
-#
-#
-#   # Nice PDF output
-#   hikmah-pdf:
-#     list-of-figures-normal: true
-#
-#     # Custom fonts
-#     mainfont: "Linux Libertine O"
-#     mainfontoptions:
-#       - "Numbers=Proportional"
-#       - "Numbers=OldStyle"
-#     sansfont: "Noto Sans"
-#     mathfont: "Libertinus Math"
-#     # linestretch: 1.05
-#
-#     include-in-header:
-#       # The \everydisplay thing makes all math blocks use \small font
-#       text: |
-#         \usepackage{mathtools}
-#         \everydisplay\expandafter{\the\everydisplay\small }
-#
-#         \SetTblrStyle{foot}{font=\footnotesize}
-#
-#         \NewTblrTheme{long}{
-#           \SetTblrStyle{caption}{hang=0pt}
-#           \SetTblrStyle{capcont}{hang=0pt}
-#           \SetTblrStyle{caption-tag}{font=\small\sffamily\bfseries}
-#           \SetTblrStyle{caption-text}{font=\small\sffamily}
-#           \SetTblrStyle{conthead-text}{font=\small\sffamily}
-#           \SetTblrStyle{contfoot}{font=\small\sffamily}
-#         }
-#
-#     knitr:
-#       opts_chunk:
-#         dev: "cairo_pdf"
-#
-#   # Manuscript-y PDF output
-#   hikmah-manuscript-pdf+ms:
-#     left-aligned: true
-#     endnotes: false
-#     list-of-figures-single: true
-#
-#     # Custom fonts
-#     mainfont: "Linux Libertine O"
-#     mainfontoptions:
-#       - "Numbers=Proportional"
-#       - "Numbers=OldStyle"
-#     mathfont: "Libertinus Math"
-#
-#     include-in-header:
-#       # The \everydisplay thing makes all math blocks use \small font
-#       text: |
-#         \usepackage{mathtools}
-#         \everydisplay\expandafter{\the\everydisplay\small }
-#
-#         \SetTblrStyle{foot}{font=\footnotesize}
-#
-#         \AtBeginEnvironment{longtblr}{\setlength{\RaggedRightParindent}{0pt}\singlespacing}
-#         \AtBeginEnvironment{Shaded}{\singlespacing}
-#
-#         % Make these headings smaller
-#         \renewcommand{\cfttoctitlefont}{\normalsize\bfseries}  % TOC
-#         \renewcommand{\cftloftitlefont}{\normalsize\bfseries}  % List of figures
-#         \renewcommand{\cftlottitlefont}{\normalsize\bfseries}  % List of tables
-#
-#         \NewTblrTheme{long}{
-#           \SetTblrStyle{caption}{hang=0pt}
-#           \SetTblrStyle{capcont}{hang=0pt}
-#           \SetTblrStyle{caption-tag}{font=\small}
-#           \SetTblrStyle{caption-text}{font=\small}
-#           \SetTblrStyle{conthead-text}{font=\small}
-#           \SetTblrStyle{contfoot}{font=\small}
-#         }
-#
-#     knitr:
-#       opts_chunk:
-#         dev: "cairo_pdf"
-#
-#   # Manuscript-y Word output
-#   hikmah-manuscript-docx: default
+
+# REference on why use Quarto to make Microsoft Office docs: [linkedin](https://www.linkedin.com/learning/data-science-reporting-with-quarto-for-python/why-use-quarto-to-make-microsoft-office-docs?resume=false)
+

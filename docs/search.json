@@ -14,11 +14,15 @@
     "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nCode\n1 + 1\n\n\n[1] 2"
   },
   {
-    "objectID": "exploration/paper.html",
-    "href": "exploration/paper.html",
-    "title": "Paper",
+    "objectID": "exploration/data-prep.html",
+    "href": "exploration/data-prep.html",
+    "title": "Data prep useful functions",
     "section": "",
-    "text": "HTML\n  \n\n  \n   HTML (new window)\n  \n\n  \n   PDF\n  \n\n  \n   PDF (download)\n  \n\n  \n  \n  \n\n  \n  \n  \n\n\n  \n   DOCX\n  \n\n  \n   DOCX (download)"
+    "text": "Code\nlibrary(here)\nlibrary(tidyverse)\n# library(targets)\nlibrary(sf)\nlibrary(gt)\nlibrary(kableExtra)\n# library(lubridate)\n\nclrs_light &lt;- MetBrewer::met.brewer(\"Tiepolo\") %&gt;% colorspace::lighten(0.8)\n\n# Generated via random.org\nset.seed(2385)\n\n\n\n\nCode\n\n\nstarwars &lt;- readRDS(here(\"data\",\"input_data\",\"starwars.Rds\"))\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases\n\n\nHere’s an overview of these variables:\n\nstarwars2 &lt;- starwars |&gt; \n  select(1, 4,5,8,10,11,12) |&gt; \n  sample_n(10) |&gt; \n  glimpse()\n## Rows: 10\n## Columns: 7\n## $ name       &lt;chr&gt; \"Wat Tambor\", \"BB8\", \"Jocasta Nu\", \"Owen Lars\", \"Tion Medon\", \"Poggle the Lesser\", \"Leia Organa\", \"…\n## $ hair_color &lt;chr&gt; \"none\", \"none\", \"white\", \"brown, grey\", \"none\", \"none\", \"brown\", \"black\", \"none\", \"brown\"\n## $ skin_color &lt;chr&gt; \"green, grey\", \"none\", \"fair\", \"light\", \"grey\", \"green\", \"light\", \"brown\", \"mottled green\", \"fair\"\n## $ sex        &lt;chr&gt; \"male\", \"none\", \"female\", \"male\", \"male\", \"male\", \"female\", \"male\", \"male\", \"male\"\n## $ homeworld  &lt;chr&gt; \"Skako\", NA, \"Coruscant\", \"Tatooine\", \"Utapau\", \"Geonosis\", \"Alderaan\", \"Iridonia\", \"Cato Neimoidia…\n## $ species    &lt;chr&gt; \"Skakoan\", \"Droid\", \"Human\", \"Human\", \"Pau'an\", \"Geonosian\", \"Human\", \"Zabrak\", \"Neimodian\", \"Human\"\n## $ films      &lt;list&gt; \"Attack of the Clones\", \"The Force Awakens\", \"Attack of the Clones\", &lt;\"A New Hope\", \"Attack of the …\n\nAnd here’s an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:\n\n\nCode\nstarwars2 %&gt;%\n  gt() %&gt;%\ncols_width(name ~ px(60),\n           homeworld ~ px(100),\n           films ~ px(150),\n           ) %&gt;%\ndata_color(columns = contains(\"color\"),\n           fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),\n                                   domain = c(FALSE, TRUE))) %&gt;%\nopt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)\n## Warning: Some values were outside the color scale and will be treated as NA\n## Some values were outside the color scale and will be treated as NA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsaveRDS(starwars2, here(\"data\",\"output_data\",\"starwars2.Rds\"))",
+    "crumbs": [
+      "Data",
+      "Data prep useful functions"
+    ]
   },
   {
     "objectID": "exploration/hypotheses.html",
@@ -57,15 +61,53 @@
     ]
   },
   {
-    "objectID": "exploration/data-prep.html",
-    "href": "exploration/data-prep.html",
-    "title": "Data prep useful functions",
+    "objectID": "exploration/paper.html",
+    "href": "exploration/paper.html",
+    "title": "Paper",
     "section": "",
-    "text": "Code\nlibrary(tidyverse)\n# library(targets)\nlibrary(sf)\nlibrary(gt)\nlibrary(kableExtra)\n# library(lubridate)\n\nclrs_light &lt;- MetBrewer::met.brewer(\"Tiepolo\") %&gt;% colorspace::lighten(0.8)\n\n# Generated via random.org\nset.seed(2385)\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases\n\n\nHere’s an overview of these variables:\n\nmtcars %&gt;%\n  glimpse()\n## Rows: 32\n## Columns: 11\n## $ mpg  &lt;dbl&gt; 21.0, 21.0, 22.8, 21.4, 18.7, 18.1, 14.3, 24.4, 22.8, 19.2, 17.8, 16.4, 17.3, 15.2, 10.4, 10.4, 14.7, 32.…\n## $ cyl  &lt;dbl&gt; 6, 6, 4, 6, 8, 6, 8, 4, 4, 6, 6, 8, 8, 8, 8, 8, 8, 4, 4, 4, 4, 8, 8, 8, 8, 4, 4, 4, 8, 6, 8, 4\n## $ disp &lt;dbl&gt; 160.0, 160.0, 108.0, 258.0, 360.0, 225.0, 360.0, 146.7, 140.8, 167.6, 167.6, 275.8, 275.8, 275.8, 472.0, …\n## $ hp   &lt;dbl&gt; 110, 110, 93, 110, 175, 105, 245, 62, 95, 123, 123, 180, 180, 180, 205, 215, 230, 66, 52, 65, 97, 150, 15…\n## $ drat &lt;dbl&gt; 3.90, 3.90, 3.85, 3.08, 3.15, 2.76, 3.21, 3.69, 3.92, 3.92, 3.92, 3.07, 3.07, 3.07, 2.93, 3.00, 3.23, 4.0…\n## $ wt   &lt;dbl&gt; 2.62, 2.88, 2.32, 3.21, 3.44, 3.46, 3.57, 3.19, 3.15, 3.44, 3.44, 4.07, 3.73, 3.78, 5.25, 5.42, 5.34, 2.2…\n## $ qsec &lt;dbl&gt; 16.5, 17.0, 18.6, 19.4, 17.0, 20.2, 15.8, 20.0, 22.9, 18.3, 18.9, 17.4, 17.6, 18.0, 18.0, 17.8, 17.4, 19.…\n## $ vs   &lt;dbl&gt; 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1\n## $ am   &lt;dbl&gt; 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1\n## $ gear &lt;dbl&gt; 4, 4, 4, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 4\n## $ carb &lt;dbl&gt; 4, 4, 1, 1, 2, 1, 4, 2, 2, 4, 4, 3, 3, 3, 4, 4, 4, 1, 2, 1, 1, 2, 2, 4, 2, 1, 2, 2, 4, 6, 8, 2\n\nAnd here’s an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:\n\n\nCode\nmtcars %&gt;%\n  gt() #%&gt;%\n\n\n\n\n\n\n\n\nmpg\ncyl\ndisp\nhp\ndrat\nwt\nqsec\nvs\nam\ngear\ncarb\n\n\n\n\n21.0\n6\n160.0\n110\n3.90\n2.62\n16.5\n0\n1\n4\n4\n\n\n21.0\n6\n160.0\n110\n3.90\n2.88\n17.0\n0\n1\n4\n4\n\n\n22.8\n4\n108.0\n93\n3.85\n2.32\n18.6\n1\n1\n4\n1\n\n\n21.4\n6\n258.0\n110\n3.08\n3.21\n19.4\n1\n0\n3\n1\n\n\n18.7\n8\n360.0\n175\n3.15\n3.44\n17.0\n0\n0\n3\n2\n\n\n18.1\n6\n225.0\n105\n2.76\n3.46\n20.2\n1\n0\n3\n1\n\n\n14.3\n8\n360.0\n245\n3.21\n3.57\n15.8\n0\n0\n3\n4\n\n\n24.4\n4\n146.7\n62\n3.69\n3.19\n20.0\n1\n0\n4\n2\n\n\n22.8\n4\n140.8\n95\n3.92\n3.15\n22.9\n1\n0\n4\n2\n\n\n19.2\n6\n167.6\n123\n3.92\n3.44\n18.3\n1\n0\n4\n4\n\n\n17.8\n6\n167.6\n123\n3.92\n3.44\n18.9\n1\n0\n4\n4\n\n\n16.4\n8\n275.8\n180\n3.07\n4.07\n17.4\n0\n0\n3\n3\n\n\n17.3\n8\n275.8\n180\n3.07\n3.73\n17.6\n0\n0\n3\n3\n\n\n15.2\n8\n275.8\n180\n3.07\n3.78\n18.0\n0\n0\n3\n3\n\n\n10.4\n8\n472.0\n205\n2.93\n5.25\n18.0\n0\n0\n3\n4\n\n\n10.4\n8\n460.0\n215\n3.00\n5.42\n17.8\n0\n0\n3\n4\n\n\n14.7\n8\n440.0\n230\n3.23\n5.34\n17.4\n0\n0\n3\n4\n\n\n32.4\n4\n78.7\n66\n4.08\n2.20\n19.5\n1\n1\n4\n1\n\n\n30.4\n4\n75.7\n52\n4.93\n1.61\n18.5\n1\n1\n4\n2\n\n\n33.9\n4\n71.1\n65\n4.22\n1.83\n19.9\n1\n1\n4\n1\n\n\n21.5\n4\n120.1\n97\n3.70\n2.46\n20.0\n1\n0\n3\n1\n\n\n15.5\n8\n318.0\n150\n2.76\n3.52\n16.9\n0\n0\n3\n2\n\n\n15.2\n8\n304.0\n150\n3.15\n3.44\n17.3\n0\n0\n3\n2\n\n\n13.3\n8\n350.0\n245\n3.73\n3.84\n15.4\n0\n0\n3\n4\n\n\n19.2\n8\n400.0\n175\n3.08\n3.85\n17.1\n0\n0\n3\n2\n\n\n27.3\n4\n79.0\n66\n4.08\n1.94\n18.9\n1\n1\n4\n1\n\n\n26.0\n4\n120.3\n91\n4.43\n2.14\n16.7\n0\n1\n5\n2\n\n\n30.4\n4\n95.1\n113\n3.77\n1.51\n16.9\n1\n1\n5\n2\n\n\n15.8\n8\n351.0\n264\n4.22\n3.17\n14.5\n0\n1\n5\n4\n\n\n19.7\n6\n145.0\n175\n3.62\n2.77\n15.5\n0\n1\n5\n6\n\n\n15.0\n8\n301.0\n335\n3.54\n3.57\n14.6\n0\n1\n5\n8\n\n\n21.4\n4\n121.0\n109\n4.11\n2.78\n18.6\n1\n1\n4\n2\n\n\n\n\n\n\n\nCode\n# cols_width(country_name ~ px(250),\n#            iso3 ~ px(60)) %&gt;%\n# data_color(columns = contains(\"derogation\"),\n#            fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),\n#                                    domain = c(FALSE, TRUE))) %&gt;%\n# opt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)",
-    "crumbs": [
-      "Data",
-      "Data prep useful functions"
-    ]
+    "text": "HTML\n  \n\n  \n   HTML (new window)\n  \n\n  \n   PDF\n  \n\n  \n   PDF (download)\n  \n\n  \n  \n  \n\n  \n  \n  \n\n\n  \n   DOCX\n  \n\n  \n   DOCX (download)"
+  },
+  {
+    "objectID": "manuscript/manuscript.html",
+    "href": "manuscript/manuscript.html",
+    "title": "Some illustrative title",
+    "section": "",
+    "text": "Did states misuse international emergency provisions during the COVID-19 crisis to justify human rights abuse? As said by (MINISTERO DEL LAVORO E DELLE POLITICHE SOCIALI 12 sett 2019)\nHere’s a footnote.1"
+  },
+  {
+    "objectID": "manuscript/manuscript.html#flextable",
+    "href": "manuscript/manuscript.html#flextable",
+    "title": "Some illustrative title",
+    "section": "Flextable",
+    "text": "Flextable\n\n\nflextablenamehair_colorskin_colorsexhomeworldspeciesfilmsLuke SkywalkerblondfairmaleTatooineHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force AwakensC-3POgoldnoneTatooineDroidA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the SithR2-D2white, bluenoneNabooDroidA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force AwakensDarth VadernonewhitemaleTatooineHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the SithLeia OrganabrownlightfemaleAlderaanHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force AwakensOwen Larsbrown, greylightmaleTatooineHumanA New Hope, Attack of the Clones, Revenge of the SithBeru Whitesun LarsbrownlightfemaleTatooineHumanA New Hope, Attack of the Clones, Revenge of the SithR5-D4white, rednoneTatooineDroidA New HopeBiggs DarklighterblacklightmaleTatooineHumanA New HopeObi-Wan Kenobiauburn, whitefairmaleStewjonHumanA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith"
+  },
+  {
+    "objectID": "manuscript/manuscript.html#flextable-with-my-function",
+    "href": "manuscript/manuscript.html#flextable-with-my-function",
+    "title": "Some illustrative title",
+    "section": "Flextable with my function",
+    "text": "Flextable with my function\n\n\nflextable with custom functionnamehair_colorskin_colorsexhomeworldspeciesfilmsLuke SkywalkerblondfairmaleTatooineHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force AwakensC-3POgoldnoneTatooineDroidA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the SithR2-D2white, bluenoneNabooDroidA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force AwakensDarth VadernonewhitemaleTatooineHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the SithLeia OrganabrownlightfemaleAlderaanHumanA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force AwakensOwen Larsbrown, greylightmaleTatooineHumanA New Hope, Attack of the Clones, Revenge of the SithBeru Whitesun LarsbrownlightfemaleTatooineHumanA New Hope, Attack of the Clones, Revenge of the SithR5-D4white, rednoneTatooineDroidA New HopeBiggs DarklighterblacklightmaleTatooineHumanA New HopeObi-Wan Kenobiauburn, whitefairmaleStewjonHumanA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith"
+  },
+  {
+    "objectID": "manuscript/manuscript.html#kable",
+    "href": "manuscript/manuscript.html#kable",
+    "title": "Some illustrative title",
+    "section": "Kable",
+    "text": "Kable\n\n\n\nkableExtra\n\n\nname\nhair_color\nskin_color\nsex\nhomeworld\nspecies\nfilms\n\n\n\n\nLuke Skywalker\nblond\nfair\nmale\nTatooine\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens\n\n\nC-3PO\n\ngold\nnone\nTatooine\nDroid\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith\n\n\nR2-D2\n\nwhite, blue\nnone\nNaboo\nDroid\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens\n\n\nDarth Vader\nnone\nwhite\nmale\nTatooine\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith\n\n\nLeia Organa\nbrown\nlight\nfemale\nAlderaan\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens\n\n\nOwen Lars\nbrown, grey\nlight\nmale\nTatooine\nHuman\nA New Hope, Attack of the Clones, Revenge of the Sith\n\n\nBeru Whitesun Lars\nbrown\nlight\nfemale\nTatooine\nHuman\nA New Hope, Attack of the Clones, Revenge of the Sith\n\n\nR5-D4\n\nwhite, red\nnone\nTatooine\nDroid\nA New Hope\n\n\nBiggs Darklighter\nblack\nlight\nmale\nTatooine\nHuman\nA New Hope\n\n\nObi-Wan Kenobi\nauburn, white\nfair\nmale\nStewjon\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith"
+  },
+  {
+    "objectID": "manuscript/manuscript.html#gt-table",
+    "href": "manuscript/manuscript.html#gt-table",
+    "title": "Some illustrative title",
+    "section": "GT table",
+    "text": "GT table\nWord support for gt is limited; the safest comparison is to render it to an image and embed it.\n\n\n\n\n\n\ngt (embedded as image for DOCX)\n\n\nname\nhair_color\nskin_color\nsex\nhomeworld\nspecies\nfilms\n\n\n\n\nLuke Skywalker\nblond\nfair\nmale\nTatooine\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens\n\n\nC-3PO\n\ngold\nnone\nTatooine\nDroid\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith\n\n\nR2-D2\n\nwhite, blue\nnone\nNaboo\nDroid\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith, The Force Awakens\n\n\nDarth Vader\nnone\nwhite\nmale\nTatooine\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith\n\n\nLeia Organa\nbrown\nlight\nfemale\nAlderaan\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, Revenge of the Sith, The Force Awakens\n\n\nOwen Lars\nbrown, grey\nlight\nmale\nTatooine\nHuman\nA New Hope, Attack of the Clones, Revenge of the Sith\n\n\nBeru Whitesun Lars\nbrown\nlight\nfemale\nTatooine\nHuman\nA New Hope, Attack of the Clones, Revenge of the Sith\n\n\nR5-D4\n\nwhite, red\nnone\nTatooine\nDroid\nA New Hope\n\n\nBiggs Darklighter\nblack\nlight\nmale\nTatooine\nHuman\nA New Hope\n\n\nObi-Wan Kenobi\nauburn, white\nfair\nmale\nStewjon\nHuman\nA New Hope, The Empire Strikes Back, Return of the Jedi, The Phantom Menace, Attack of the Clones, Revenge of the Sith\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases"
+  },
+  {
+    "objectID": "manuscript/manuscript.html#footnotes",
+    "href": "manuscript/manuscript.html#footnotes",
+    "title": "Some illustrative title",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis is the text of the footnote.↩︎"
   },
   {
     "objectID": "presentations/index.html",

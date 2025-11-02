@@ -26,6 +26,7 @@ options(
 ```
 
 ```{r load-libraries, warning=FALSE, message=FALSE}
+library(here)
 library(tidyverse)
 # library(targets)
 library(sf)
@@ -37,7 +38,13 @@ clrs_light <- MetBrewer::met.brewer("Tiepolo") %>% colorspace::lighten(0.8)
 
 # Generated via random.org
 set.seed(2385)
+```
 
+
+```{r load-data, warning=FALSE, message=FALSE}
+
+
+starwars <- readRDS(here("data","input_data","starwars.Rds"))
 ```
 
 
@@ -47,24 +54,28 @@ In many cases
 
 Here's an overview of these variables:
 
-```{r glimpse-iccpr}
+```{r glimpse}
 #| code-fold: false
-mtcars %>%
+starwars2 <- starwars |> 
+  select(1, 4,5,8,10,11,12) |> 
+  sample_n(10) |> 
   glimpse()
 ```
 
 And here's an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:
 
-```{r show-iccpr}
+```{r show}
 #| column: page-right
-mtcars %>%
-  gt() #%>%
-# cols_width(country_name ~ px(250),
-#            iso3 ~ px(60)) %>%
-# data_color(columns = contains("derogation"),
-#            fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),
-#                                    domain = c(FALSE, TRUE))) %>%
-# opt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)
+starwars2 %>%
+  gt() %>%
+cols_width(name ~ px(60),
+           homeworld ~ px(100),
+           films ~ px(150),
+           ) %>%
+data_color(columns = contains("color"),
+           fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),
+                                   domain = c(FALSE, TRUE))) %>%
+opt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)
 ```
 
 <!-- And here's a map of all the countries that derogated between January 2020 and June 2021: -->
@@ -87,4 +98,8 @@ mtcars %>%
 <!--         legend.justification = "center") -->
 <!-- ``` -->
 
+
+```{r save}
+saveRDS(starwars2, here("data","output_data","starwars2.Rds"))
+```
 

@@ -1,70 +1,54 @@
 ---
-title: "Pandemic Pass? Treaty Derogations and Human Rights Practices During COVID-19"
-short-title: "Pandemic Pass?"
+title: "Some illustrative title"
+short-title: "Short Title"
 subtitle: "(Research note)"
 author:
-- name: Suparna Chaudhry
-  affiliation: Lewis and Clark College
-  orcid: 0000-0003-3506-7590
-  url: https://www.suparnachaudhry.com/
-  email: schaudhry@lclark.edu
-- name: Audrey L. Comstock
-  affiliation: Arizona State University
-  orcid: 0000-0003-1772-5350
-  url: https://audreylcomstock.weebly.com/
-  email: audrey.comstock@asu.edu
-- name: Andrew Heiss
-  affiliations: 
-    - id: gsu
-      name: Georgia State University
-      department: Andrew Young School of Policy Studies, Department of Public Management and Policy
-      address: "55 Park Place NE, #464"
-      city: Atlanta
-      region: GA
-      country: USA
-      postal-code: 30303
-  orcid: 0000-0002-3948-3914
-  url: https://www.andrewheiss.com
-  email: aheiss@gsu.edu
+- name: Name S. Surname
+  affiliation: Some University # singola affiliazione
+  orcid: 0000-0001-2345-6789
+  url: https://example.com/
+  email: fakeemail@uni.edu
+- name: Luisa M. Mimmi
+  affiliations: # lista di affiliazioni
+    - id: cariparma
+      name: Fondazione Cariparma
+      department: Osservatorio dei Dati Sociali
+      address: "Strada al Ponte Caprazucca, 4/A"
+      city: Parma
+      region: PR
+      country: Italy
+      postal-code: 43121
+  orcid: 0000-0002-2244-8282
+  url: https://luisamimmi.org/
+  email: mimmi@fondazionecrp.it
   attributes:
     corresponding: true
 correspondence-prefix: "Correspondence concerning this article should be addressed to"
 abstract: |
-  This research note asks whether...
+  This is the ABSTRACT which is in the YAML header.......
 thanks: |
-  We would like to thank participants .
+  This is the THANKS which is in the YAML header.....
 date: July 25, 2024
 code-repo: "Access the code, data, and analysis at <https://github.com/andrewheiss/mountainous-mackerel>"
 keywords:
-  - human rights
-  - treaty derogations
-  - COVID-19
-  - emergency policies
+  - stars
+  - wars
 bibliography: bib/CARIPARMA.bib
 csl: bib/chicago-author-date.csl
 link-citations: true
+# General options for code chunks
+execute:
+  eval: true
+  echo: false
+  warning: false
+  message: false
+  error: false
+  output: false # except where otherwise defined
 ---
 
-```{r setup, include=FALSE}
-if (is.null(knitr::pandoc_to())) {
-  fmt_out <- "interactive"
-} else {
-  fmt_out <- knitr::pandoc_to()
-}
 
-knitr::opts_chunk$set(echo = FALSE, include = FALSE, 
-                      warning = FALSE, message = FALSE)
-
-knitr::opts_chunk$set(fig.align = "center", fig.retina = 3,
-                      fig.width = 6, fig.height = (6 * 0.618),
-                      out.width = "80%", collapse = TRUE)
-
-options(digits = 3, width = 120,
-        dplyr.summarise.inform = FALSE,
-        knitr.kable.NA = "")
-```
-
-```{r libraries-data}
+```{r libraries-manuscript}
+library(here)
 library(tidyverse)
 library(scales)
 library(sf)
@@ -72,39 +56,142 @@ library(lubridate)
 # library(tidybayes)
 # library(marginaleffects)
 library(patchwork)
-library(colorspace)
-library(tinytable)
+# library(colorspace)
+# library(tinytable)
 library(kableExtra)
+library(gt)
+# library(MetBrewer)
+library(flextable)
 # library(targets)
 
-# tar_config_set(store = here::here('_targets'),
-#                script = here::here('_targets.R'))
-# 
-# # Generated via random.org
-# set.seed(8511)
-# 
-# # Load targets 
-# weekly_panel <- tar_read(weekly_panel) %>% 
-#   mutate(year_week_day = ymd(year_week_day))
-# 
-# quarterly_panel <- tar_read(quarterly_panel) %>% 
-#   mutate(year_quarter_day = ymd(year_quarter_day))
-# 
-# tar_load(c(policies_plot_data, human_rights_plot_data))
-# tar_load(c(policies_table_data, hr_table_data))
-# tar_load(c(derogation_map_data, derogation_count))
-# 
-# # Plotting and modelsummary functions
-# invisible(list2env(tar_read(graphic_functions), .GlobalEnv))
-# invisible(list2env(tar_read(modelsummary_functions), .GlobalEnv))
 ```
 
- 
+
 ::: {.content-visible when-format="html"}
 # Introduction {.hide}
 :::
 
 Did states misuse international emergency provisions during the COVID-19 crisis to justify human rights abuse? As said by [@ministerodellavoroedellepolitichesocialiDECRETO23Luglio2019] 
+
+Here's a footnote.[^1]
+
+[^1]: This is the text of the footnote.
+
+
+# Data
+
+```{r load-data-OKKIO-paths}
+#starwars2 <- readRDS(here("data","output_data","starwars2.Rds"))
+
+starwars2 <- readRDS(here("..","data","output_data","starwars2.Rds"))
+
+```
+ 
+
+Here's an overview of these variables.
+
+```{r glimpse-iccpr}
+#| code-fold: false
+starwars2 %>%
+  glimpse()
+
+# --- Build a reproducible 10x7 sample with a list-column 'films' ---
+data_tbl <- dplyr::starwars %>%
+  transmute(
+    name,
+    hair_color,
+    skin_color,
+    sex      = as.character(sex),
+    homeworld,
+    species  = as.character(species),
+    films    # list-column stays as-is for now
+  ) %>%
+  filter(!map_lgl(films, ~ is.null(.x) || length(.x) == 0)) %>%
+  slice_head(n = 10)
+
+# Flatten the list-column for Word tables
+tbl_docx <- data_tbl %>%
+  mutate(
+    films = map_chr(films, ~ paste(.x, collapse = ", ")),
+    across(everything(), ~ replace_na(as.character(.x), ""))
+  )
+
+```
+
+# Tables 
+
+Comparing how different functions create tables: I am especially worried about how they render in Word output.
+
+## Flextable
+
+```{r}
+#| label: table-flextable
+#| tbl-cap: "flextable"
+#| output: true
+
+ft <- flextable(tbl_docx) |> 
+  theme_vanilla() |> 
+  autofit()
+ 
+ft
+
+```
+
+
+## Flextable with my function
+
+```{r}
+#| label: table-flextable-custom
+#| tbl-cap: "flextable with custom function"
+#| output: true
+
+
+source(here("..","R","f_ft_formatting.R"))
+
+ft2 <- flextable(tbl_docx) |> 
+  f_ft_word()
+ft2
+```
+
+## Kable 
+
+```{r}
+#| label: table-kable
+#| tbl-cap: "kableExtra"
+#| output: true
+
+kbl_tbl <- tbl_docx |> 
+  kable(
+    format = "simple", # let Pandoc turn it into a Word table
+    caption = "knitr::kable (docx baseline)",
+    align = "l"
+  )
+kbl_tbl
+```
+
+
+## GT table
+Word support for gt is limited; the safest comparison is to render it to an image and embed it.
+```{r}
+#| label: table-gt
+#| tbl-cap: "gt (embedded as image for DOCX)"
+#| output: true
+
+gt_tbl <- gt::gt(tbl_docx) |>
+    #gt::tab_header(title = gt::md("**gt** (rendered as image for DOCX)")) |>
+    gt::opt_row_striping() |>
+    gt::tab_options(table.font.size = 10)
+
+ 
+gt_tbl
+```
+
+:::{.callout-note}
+In many cases 
+:::
+
+
+
 
 # Conclusion
 
