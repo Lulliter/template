@@ -120,78 +120,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"crsh/citr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="xquartz" class="level2">
-<h2 class="anchored" data-anchor-id="xquartz">XQuartz</h2>
-<p>XQuartz (il sistema X Window System (X11) per macOS) necessario per i dispositivi grafici o i grafici interattivi in R.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> xquartz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="deploying-on-gh-pages" class="level2">
-<h2 class="anchored" data-anchor-id="deploying-on-gh-pages">Deploying on GH pages</h2>
+<section id="deploying-quarto-websites-on-gh-pages" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-quarto-websites-on-gh-pages">Deploying QUarto websites on GH pages</h2>
 <ul>
 <li>add <code>.nojeckyll</code> file to the root of the gh-pages branch</li>
 <li>set the site-url in <code>_quarto.yml</code> file:</li>
 </ul>
 </section>
-<section id="package-renv" class="level2">
-<h2 class="anchored" data-anchor-id="package-renv">Package <code>renv</code></h2>
-<p>The <code>renv</code> package is used to manage R package dependencies for the project, which makes it easier to reproduce the project environment on different machines.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># --- initialize to create a new renv environment</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">init</span>()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># --- snapshot (= SAVE as LATEST) the current state of R packages</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># --- restore (= REVERT to PREVIOUS) the R packages as per the lockfile</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="problema-con-renv-e-gdtools" class="level3">
-<h3 class="anchored" data-anchor-id="problema-con-renv-e-gdtools">problema con <code>renv</code> e <code>gdtools</code></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>() <span class="co"># gives error "CairoContext.cpp:1:10: fatal error: 'string' file not found""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>MEANS: the <code>gdtools</code> package is having trouble finding the necessary system libraries to compile its C++ code. This is often due to missing or misconfigured development tools on your system.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">xcode-select</span> <span class="at">--install</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># don't have full Xcode (needed for gdtools) installed, only the Command Line Tools.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Install Full <code>Xcode</code> from the App Store.</p>
-<p>Then</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> xcode-select <span class="at">-s</span> /Applications/Xcode.app/Contents/Developer</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> xcodebuild <span class="at">-license</span> <span class="co"># "agree" to the license</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then try reinstalling <code>gdtools</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("gdtools")</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">install</span>(<span class="st">"gdtools"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="some-useful-fomratting-stuff" class="level2">
+<h2 class="anchored" data-anchor-id="some-useful-fomratting-stuff">Some useful fomratting stuff</h2>
+<p>See files in <code>R/*</code>:</p>
+<ul>
+<li><code>_fonts.qmd</code> (how to add fonts)</li>
+<li><code>_parma_colors.qmd</code> (custom color palette)</li>
+<li><code>issue_renv.md</code> (problem with <code>renv</code> and <code>gdtools</code>)</li>
+<li><code>_f_*/.R</code> (various functions)</li>
+</ul>
+<hr>
 </section>
-<section id="problema-com-brew" class="level3">
-<h3 class="anchored" data-anchor-id="problema-com-brew">problema com <code>brew</code></h3>
-<p>Homebrew su Apple Silicon può installare librerie nella directory sbagliata (/usr/local → x86_64), mentre tu hai bisogno di quelle in /opt/homebrew (arm64).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> brew</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># /opt/homebrew/bin/brew</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Reinstallare le librerie necessarie con il brew corretto:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># uninstall con il brew sbagliato</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> uninstall cairo freetype libpng fontconfig pixman libx11 libxext libxrender</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># reinstall con il brew corretto</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/opt/homebrew/bin/brew</span> reinstall pkg-config cairo pango libpng jpeg giflib librsvg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="soluzione-finale" class="level3">
-<h3 class="anchored" data-anchor-id="soluzione-finale">Soluzione finale</h3>
-<p>🔧 1. Forza pkg-config a usare solo le librerie arm64</p>
-<p>Nel terminale, prima di avviare R, esporta la variabile PKG_CONFIG_PATH correttamente:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PKG_CONFIG_PATH</span><span class="op">=</span><span class="st">"/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>🔁 2. Avvia R nella stessa shell, poi installa gdtools:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">R</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">install.packages</span><span class="er">(</span><span class="st">"gdtools"</span><span class="ex">,</span> type = <span class="st">"source"</span><span class="kw">)</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># oppure</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">renv::install</span><span class="er">(</span><span class="st">"gdtools"</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This ensures che <code>pkg-config</code> cerchi le librerie nella directory corretta per Apple Silicon.</p>
-<section id="aggiungere-questa-riga-al-file-.zshrc-o-.bash_profile-per-renderla-permanente" class="level4">
-<h4 class="anchored" data-anchor-id="aggiungere-questa-riga-al-file-.zshrc-o-.bash_profile-per-renderla-permanente">Aggiungere questa riga al file <code>.zshrc</code> o <code>.bash_profile</code> per renderla permanente:</h4>
-<p>Per far sì che questa impostazione sia permanente e non debba essere ripetuta ogni volta, aggiungi la riga di esportazione al tuo file di configurazione della shell (<code>.zshrc</code> per Zsh o <code>.bash_profile</code> per Bash):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> ~/.zshrc</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggiungi questa riga alla fine del file</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PKG_CONFIG_PATH</span><span class="op">=</span><span class="st">"/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig"</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rendi effettive le modifiche</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.zshrc</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># controlla</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PKG_CONFIG_PATH</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># /opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
+<section id="xquartz" class="level2">
+<h2 class="anchored" data-anchor-id="xquartz">XQuartz</h2>
+<p>XQuartz (il sistema X Window System (X11) per macOS) necessario per i dispositivi grafici o i grafici interattivi in R.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> xquartz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 

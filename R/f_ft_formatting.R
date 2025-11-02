@@ -4,10 +4,13 @@ library(dplyr)
 library(stringr)
 library(flextable)
 library(systemfonts)
-# fonts <-  systemfonts::system_fonts() |> 
+
+# --- Inspect available system fonts (optional) -----------------------------
+# ---- VEDERE `_fonts.qmd` ------
+# fonts <-  systemfonts::system_fonts() |>
 #   # filter if family name contains "condensed"
 #   filter(str_detect(family,  "Condensed"))  |>
-#   select(name, family, style)  
+#   select(name, family, style)
 
 # --- Step 1: set target font with safe fallbacks -----------------------------
 # verify a font exists on *your* system
@@ -21,16 +24,17 @@ f_has_font <- function(family) {
   # EXE
   f_has_font("Roboto Condensed")  # TRUE
   f_has_font("Segoe UI")  # FALSE
+  f_has_font("Libre Franklin")  # TRUE
 
 # Pick preferred or fallback font
-f_pick_font <- function(candidates = c("Roboto Condensed", "Open Sans", "Segoe UI", "Tahoma", "Arial")) {
+f_pick_font <- function(candidates = c("Roboto Condensed", "Libre Franklin", "Open Sans", "Segoe UI", "Tahoma", "Arial")) {
   for (fam in candidates) if (f_has_font(fam)) return(fam)
   "Arial"  # absolute last-resort
 }
 
 # Define target font
 target_font <- f_pick_font()
-message("Using font: ", target_font) 
+message("Using font: ", target_font)
 
 # --- Step 2: set flextable defaults -----------------------------------------
 set_flextable_defaults(line_spacing = 1,
@@ -90,7 +94,7 @@ f_ft_word <- function(ft) {
 
 
 
- 
+
 # --- OKKIO: QUESTA E' da aggiungere con -----
 # ft |> f_ft_word()  # <-- applica le impostazioni per Word
 

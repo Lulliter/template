@@ -76,6 +76,8 @@ This will: - Unzip any `Libre_Franklin*.zip` found in `~/Downloads/` - Copy all 
 cd ~/Downloads 
 ls *.zip 
 unzip Lato.zip -d ~/Downloads/Lato
+# OR for Libre Franklin:
+unzip "Libre_Franklin.zip" -d ~/Downloads/Libre_Franklin
 ```
 
 Then copy the files in the User's Fonts folder
@@ -89,6 +91,8 @@ mkdir -p ~/Library/Fonts
 
 echo "Looking for Lato TTF(s) in ~/Downloads/Lato…"
 find ~/Downloads/Lato -type f -iname "Lato*.ttf" -print -exec cp {} ~/Library/Fonts/ \;
+# OR for Libre Franklin:
+find ~/Downloads/Libre_Franklin -type f -iname "LibreFranklin*.ttf" -print -exec cp {} ~/Library/Fonts/ \;
 
 # Verify what was copied
 echo "Installed Lato TTF files in ~/Library/Fonts:"
@@ -99,6 +103,8 @@ ls ~/Library/Fonts | grep -i "franklin\|roboto\|lato" || true
 
 # Clean up unzipped folder (optional)
 rm -rf ~/Downloads/Lato
+# OR for Libre Franklin:
+rm -rf ~/Downloads/Libre_Franklin
 ```
 
 ------------------------------------------------------------------------
@@ -121,8 +127,11 @@ sf <- system_fonts()
 rob <- subset(sf, str_detect(family, regex("Lato", ignore_case = TRUE)))
 rob
 
+libref <- subset(sf, str_detect(family, regex("Libre\\s*Franklin", ignore_case = TRUE)))
+
 # Inspect the exact family name(s) you'll use in plots (the `family` column)
 unique(rob$family)
+unique(libref$family)
 ```
 
 If you see rows, the font is successfully installed and recognized by R.
