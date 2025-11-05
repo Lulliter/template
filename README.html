@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -61,15 +61,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="README_files/libs/clipboard/clipboard.min.js"></script>
 <script src="README_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="README_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="README_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="README_files/libs/quarto-html/popper.min.js"></script>
 <script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="README_files/libs/quarto-html/anchor.min.js"></script>
 <link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="README_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="README_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="README_files/libs/bootstrap/bootstrap-81267100e462c21b3d6c0d5bf76a3417.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -88,27 +87,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="inspiration" class="level2">
 <h2 class="anchored" data-anchor-id="inspiration">Inspiration</h2>
 <ul>
-<li>Site https://stats.andrewheiss.com/mountainous-mackerel/</li>
-<li>Repo https://github.com/andrewheiss/mountainous-mackerel/tree/main</li>
+<li>This <a href="https://stats.andrewheiss.com/mountainous-mackerel/">publication site by Andrew Heiss</a></li>
+<li>And its <a href="https://github.com/andrewheiss/mountainous-mackerel/tree/main">repo</a></li>
 </ul>
+</section>
+<section id="repo-file-tree" class="level2">
+<h2 class="anchored" data-anchor-id="repo-file-tree">Repo file tree</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tree</span>  <span class="at">-L</span> 2 <span class="at">-I</span> <span class="st">'_freeze | zzz_old | renv | docs'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Using <a href="https://carbon.now.sh/">Carbon (code screenshots)</a></p>
+<p><img src="assets/tree.png" class="img-fluid" style="width:50.0%"></p>
 </section>
 <section id="quarto" class="level2">
 <h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
 <p>Intalla da https://quarto.org/docs/get-started/</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">which</span> <span class="at">-a</span> quarto <span class="kw">&amp;&amp;</span> <span class="ex">quarto</span> <span class="at">--version</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># /Users/luisamimmi/Applications/quarto/bin/quarto</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/bin/quarto</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># /Applications/quarto/bin/quarto</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.8.25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">which</span> <span class="at">-a</span> quarto <span class="kw">&amp;&amp;</span> <span class="ex">quarto</span> <span class="at">--version</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># /Users/luisamimmi/Applications/quarto/bin/quarto</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># /usr/local/bin/quarto</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># /Applications/quarto/bin/quarto</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.8.25</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="quarto-extensions" class="level2">
 <h2 class="anchored" data-anchor-id="quarto-extensions">Quarto Extensions</h2>
 <p>To add extensions to your Quarto website, you can use the <code>quarto add</code> command. Here are some examples of how to add popular extensions:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add quarto-ext/fontawesome</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add andrewheiss/quarto-wordcount </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add andrewheiss/hikmah-academic-quarto   </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add quarto-ext/openai</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add quarto-ext/fontawesome</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add andrewheiss/quarto-wordcount </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add andrewheiss/hikmah-academic-quarto   </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> add quarto-ext/openai</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="zotero" class="level2">
 <h2 class="anchored" data-anchor-id="zotero">Zotero</h2>
@@ -116,8 +121,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="rstudio-add-in-for-citations" class="level3">
 <h3 class="anchored" data-anchor-id="rstudio-add-in-for-citations">RStudio add in for citations</h3>
 <p>Install the <code>citr</code> package in R to enable easy citation insertion in RMarkdown and Quarto documents.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if CRAN not current, use GitHub</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"crsh/citr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># if CRAN not current, use GitHub</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"crsh/citr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="deploying-quarto-websites-on-gh-pages" class="level2">
@@ -133,7 +138,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><code>_fonts.qmd</code> (how to add fonts)</li>
 <li><code>_parma_colors.qmd</code> (custom color palette)</li>
-<li><code>issue_renv.md</code> (problem with <code>renv</code> and <code>gdtools</code>)</li>
+<li><code>issue_renv.md</code> (problem with <code>renv</code> and <code>gdtools</code>)
+<ul>
+<li>see also some changes added in <code>assets/COPIA.zshrc.pdf</code><br>
+</li>
+</ul></li>
 <li><code>_f_*/.R</code> (various functions)</li>
 </ul>
 <hr>
@@ -141,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="xquartz" class="level2">
 <h2 class="anchored" data-anchor-id="xquartz">XQuartz</h2>
 <p>XQuartz (il sistema X Window System (X11) per macOS) necessario per i dispositivi grafici o i grafici interattivi in R.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> xquartz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> xquartz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 
@@ -198,14 +207,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

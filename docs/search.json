@@ -1,71 +1,10 @@
 [
   {
-    "objectID": "test.html",
-    "href": "test.html",
-    "title": "test",
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "Presentations",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nCode\n1 + 1\n\n\n[1] 2"
-  },
-  {
-    "objectID": "test.html#quarto",
-    "href": "test.html#quarto",
-    "title": "test",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n\n\nCode\n1 + 1\n\n\n[1] 2"
-  },
-  {
-    "objectID": "exploration/data-prep.html",
-    "href": "exploration/data-prep.html",
-    "title": "Data prep useful functions",
-    "section": "",
-    "text": "Code\nlibrary(here)\nlibrary(tidyverse)\n# library(targets)\nlibrary(sf)\nlibrary(gt)\nlibrary(kableExtra)\n# library(lubridate)\n\nclrs_light &lt;- MetBrewer::met.brewer(\"Tiepolo\") %&gt;% colorspace::lighten(0.8)\n\n# Generated via random.org\nset.seed(2385)\n\n\n\n\nCode\n\n\nstarwars &lt;- readRDS(here(\"data\",\"input_data\",\"starwars.Rds\"))\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases\n\n\nHere’s an overview of these variables:\n\nstarwars2 &lt;- starwars |&gt; \n  select(1, 4,5,8,10,11,12) |&gt; \n  sample_n(10) |&gt; \n  glimpse()\n## Rows: 10\n## Columns: 7\n## $ name       &lt;chr&gt; \"Wat Tambor\", \"BB8\", \"Jocasta Nu\", \"Owen Lars\", \"Tion Medon\", \"Poggle the Lesser\", \"Leia Organa\", \"…\n## $ hair_color &lt;chr&gt; \"none\", \"none\", \"white\", \"brown, grey\", \"none\", \"none\", \"brown\", \"black\", \"none\", \"brown\"\n## $ skin_color &lt;chr&gt; \"green, grey\", \"none\", \"fair\", \"light\", \"grey\", \"green\", \"light\", \"brown\", \"mottled green\", \"fair\"\n## $ sex        &lt;chr&gt; \"male\", \"none\", \"female\", \"male\", \"male\", \"male\", \"female\", \"male\", \"male\", \"male\"\n## $ homeworld  &lt;chr&gt; \"Skako\", NA, \"Coruscant\", \"Tatooine\", \"Utapau\", \"Geonosis\", \"Alderaan\", \"Iridonia\", \"Cato Neimoidia…\n## $ species    &lt;chr&gt; \"Skakoan\", \"Droid\", \"Human\", \"Human\", \"Pau'an\", \"Geonosian\", \"Human\", \"Zabrak\", \"Neimodian\", \"Human\"\n## $ films      &lt;list&gt; \"Attack of the Clones\", \"The Force Awakens\", \"Attack of the Clones\", &lt;\"A New Hope\", \"Attack of the …\n\nAnd here’s an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:\n\n\nCode\nstarwars2 %&gt;%\n  gt() %&gt;%\ncols_width(name ~ px(60),\n           homeworld ~ px(100),\n           films ~ px(150),\n           ) %&gt;%\ndata_color(columns = contains(\"color\"),\n           fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),\n                                   domain = c(FALSE, TRUE))) %&gt;%\nopt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)\n## Warning: Some values were outside the color scale and will be treated as NA\n## Some values were outside the color scale and will be treated as NA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsaveRDS(starwars2, here(\"data\",\"output_data\",\"starwars2.Rds\"))",
-    "crumbs": [
-      "Data",
-      "Data prep useful functions"
-    ]
-  },
-  {
-    "objectID": "exploration/hypotheses.html",
-    "href": "exploration/hypotheses.html",
-    "title": "Hypotheses",
-    "section": "",
-    "text": "We test two sets of hypotheses:",
-    "crumbs": [
-      "Analysis",
-      "Research Questions",
-      "Hypotheses"
-    ]
-  },
-  {
-    "objectID": "exploration/hypotheses.html#h1-formal-derogations-and-pandemic-related-emergency-policies",
-    "href": "exploration/hypotheses.html#h1-formal-derogations-and-pandemic-related-emergency-policies",
-    "title": "Hypotheses",
-    "section": "H1: Formal derogations and pandemic-related emergency policies",
-    "text": "H1: Formal derogations and pandemic-related emergency policies\n\nH1a: If states issued COVID-19 derogations, then we expect that they will be more likely to impose relevant emergency polices such as canceling public events, restricting gatherings, closing public transit, and restricting domestic and international movement.\nH1b: If states did not issue COVID-19 derogations, we expect that they will be less likely to impose related emergency policies.",
-    "crumbs": [
-      "Analysis",
-      "Research Questions",
-      "Hypotheses"
-    ]
-  },
-  {
-    "objectID": "exploration/hypotheses.html#h2-formal-derogations-and-pandemic-related-human-rights-violations",
-    "href": "exploration/hypotheses.html#h2-formal-derogations-and-pandemic-related-human-rights-violations",
-    "title": "Hypotheses",
-    "section": "H2: Formal derogations and pandemic-related human rights violations",
-    "text": "H2: Formal derogations and pandemic-related human rights violations\n\nH2a: If states formally derogate from international treaty provisions, then they are less likely to use discriminatory policy measures during the pandemic.\nH2b: If states formally derogate from international treaty provisions, then they are less likely to violate non-derogable rights.\nH2c: If states formally derogate from international treaty provisions, then they are less likely to impose measures with no time limits.",
-    "crumbs": [
-      "Analysis",
-      "Research Questions",
-      "Hypotheses"
-    ]
-  },
-  {
-    "objectID": "exploration/paper.html",
-    "href": "exploration/paper.html",
-    "title": "Paper",
-    "section": "",
-    "text": "HTML\n  \n\n  \n   HTML (new window)\n  \n\n  \n   PDF\n  \n\n  \n   PDF (download)\n  \n\n  \n  \n  \n\n  \n  \n  \n\n\n  \n   DOCX\n  \n\n  \n   DOCX (download)"
+    "text": "International Studies Association\n\n\nAnnual conference of the International Studies Association (ISA); Montréal, Canada\n\n\n\n\n\n\nMarch 17, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "manuscript/manuscript.html",
@@ -110,10 +49,64 @@
     "text": "Footnotes\n\n\nThis is the text of the footnote.↩︎"
   },
   {
-    "objectID": "presentations/index.html",
-    "href": "presentations/index.html",
-    "title": "Presentations",
+    "objectID": "exploration/paper.html",
+    "href": "exploration/paper.html",
+    "title": "Paper",
     "section": "",
-    "text": "International Studies Association\n\n\nAnnual conference of the International Studies Association (ISA); Montréal, Canada\n\n\n\n\n\n\nMarch 17, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "HTML\n  \n\n  \n   HTML (new window)\n  \n\n  \n   PDF\n  \n\n  \n   PDF (download)\n  \n\n  \n  \n  \n\n  \n  \n  \n\n\n  \n   DOCX\n  \n\n  \n   DOCX (download)"
+  },
+  {
+    "objectID": "exploration/hypotheses.html",
+    "href": "exploration/hypotheses.html",
+    "title": "Hypotheses",
+    "section": "",
+    "text": "We test two sets of hypotheses:",
+    "crumbs": [
+      "Analysis",
+      "Research Questions",
+      "Hypotheses"
+    ]
+  },
+  {
+    "objectID": "exploration/hypotheses.html#h1-formal-derogations-and-pandemic-related-emergency-policies",
+    "href": "exploration/hypotheses.html#h1-formal-derogations-and-pandemic-related-emergency-policies",
+    "title": "Hypotheses",
+    "section": "H1: Formal derogations and pandemic-related emergency policies",
+    "text": "H1: Formal derogations and pandemic-related emergency policies\n\nH1a: If states issued COVID-19 derogations, then we expect that they will be more likely to impose relevant emergency polices such as canceling public events, restricting gatherings, closing public transit, and restricting domestic and international movement.\nH1b: If states did not issue COVID-19 derogations, we expect that they will be less likely to impose related emergency policies.",
+    "crumbs": [
+      "Analysis",
+      "Research Questions",
+      "Hypotheses"
+    ]
+  },
+  {
+    "objectID": "exploration/hypotheses.html#h2-formal-derogations-and-pandemic-related-human-rights-violations",
+    "href": "exploration/hypotheses.html#h2-formal-derogations-and-pandemic-related-human-rights-violations",
+    "title": "Hypotheses",
+    "section": "H2: Formal derogations and pandemic-related human rights violations",
+    "text": "H2: Formal derogations and pandemic-related human rights violations\n\nH2a: If states formally derogate from international treaty provisions, then they are less likely to use discriminatory policy measures during the pandemic.\nH2b: If states formally derogate from international treaty provisions, then they are less likely to violate non-derogable rights.\nH2c: If states formally derogate from international treaty provisions, then they are less likely to impose measures with no time limits.",
+    "crumbs": [
+      "Analysis",
+      "Research Questions",
+      "Hypotheses"
+    ]
+  },
+  {
+    "objectID": "exploration/data-prep.html",
+    "href": "exploration/data-prep.html",
+    "title": "Data prep useful functions",
+    "section": "",
+    "text": "Code\nlibrary(here)\nlibrary(tidyverse)\n# library(targets)\nlibrary(sf)\nlibrary(gt)\nlibrary(kableExtra)\n# library(lubridate)\n\nclrs_light &lt;- MetBrewer::met.brewer(\"Tiepolo\") %&gt;% colorspace::lighten(0.8)\n\n# Generated via random.org\nset.seed(2385)\n\n\n\n\nCode\n\n\nstarwars &lt;- readRDS(here(\"data\",\"input_data\",\"starwars.Rds\"))\n\n\n\n\n\n\n\n\nNote\n\n\n\nIn many cases\n\n\nHere’s an overview of these variables:\n\nstarwars2 &lt;- starwars |&gt; \n  select(1, 4,5,8,10,11,12) |&gt; \n  sample_n(10) |&gt; \n  glimpse()\n## Rows: 10\n## Columns: 7\n## $ name       &lt;chr&gt; \"Wat Tambor\", \"BB8\", \"Jocasta Nu\", \"Owen Lars\", \"Tion Medon\", \"Poggle the Lesser\", \"Leia Organa\", \"…\n## $ hair_color &lt;chr&gt; \"none\", \"none\", \"white\", \"brown, grey\", \"none\", \"none\", \"brown\", \"black\", \"none\", \"brown\"\n## $ skin_color &lt;chr&gt; \"green, grey\", \"none\", \"fair\", \"light\", \"grey\", \"green\", \"light\", \"brown\", \"mottled green\", \"fair\"\n## $ sex        &lt;chr&gt; \"male\", \"none\", \"female\", \"male\", \"male\", \"male\", \"female\", \"male\", \"male\", \"male\"\n## $ homeworld  &lt;chr&gt; \"Skako\", NA, \"Coruscant\", \"Tatooine\", \"Utapau\", \"Geonosis\", \"Alderaan\", \"Iridonia\", \"Cato Neimoidia…\n## $ species    &lt;chr&gt; \"Skakoan\", \"Droid\", \"Human\", \"Human\", \"Pau'an\", \"Geonosian\", \"Human\", \"Zabrak\", \"Neimodian\", \"Human\"\n## $ films      &lt;list&gt; \"Attack of the Clones\", \"The Force Awakens\", \"Attack of the Clones\", &lt;\"A New Hope\", \"Attack of the …\n\nAnd here’s an extract of the data from June 11, 2020, the day that Argentina filed a derogation notice:\n\n\nCode\nstarwars2 %&gt;%\n  gt() %&gt;%\ncols_width(name ~ px(60),\n           homeworld ~ px(100),\n           films ~ px(150),\n           ) %&gt;%\ndata_color(columns = contains(\"color\"),\n           fn = scales::col_factor(c(clrs_light[1], clrs_light[8]),\n                                   domain = c(FALSE, TRUE))) %&gt;%\nopt_interactive(use_compact_mode = TRUE, use_highlight = TRUE)\n## Warning: Some values were outside the color scale and will be treated as NA\n## Some values were outside the color scale and will be treated as NA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCode\nsaveRDS(starwars2, here(\"data\",\"output_data\",\"starwars2.Rds\"))",
+    "crumbs": [
+      "Data",
+      "Data prep useful functions"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Template for Quarto Projects",
+    "section": "",
+    "text": "This is a template for Quarto projects, including:\n\ndata exploration\nviz/presentation\nmanuscript (as a somewhat independent folder with outputs)\nlots of utility functions & “note-to-self” bits in the ./R/* folder\n\nhow to add a font\nhow to format for word outputs\nrenv setup\netc"
   }
 ]

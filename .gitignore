@@ -50,6 +50,19 @@ zzz_old/*
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
 .httr-oauth
 
+# ----------------- IGNORE FOLDER EXCEPT FOR ....
+# OKKIO `/**/*.ext` will go look for extension recursively
+# ignore everything under...
+zzzz_heavy_stuff/**
+# ...BUT keep track of the `*.md` files (regardless how deep in the folder)
+!zzzz_heavy_stuff/**/*.md
+##--- check with 
+# what will be tracked under data_out     git ls-files 'zzzz_heavy_stuff/**'
+# what’s being ignored there              git status --ignored -- zzzz_heavy_stuff/**/
+# OPTIONAL put .gitkeep  in subfolder to track even empty
+# keep the folder present even if empty/ignored
+!/zzzz_heavy_stuff/heavy_content/.gitkeep
+
 ## ----------------- R PACKG FILES
 ## Example code in package build process
 #*-Ex.R

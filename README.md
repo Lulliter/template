@@ -3,9 +3,19 @@
 
 ## Inspiration
 
-- Site https://stats.andrewheiss.com/mountainous-mackerel/
-- Repo https://github.com/andrewheiss/mountainous-mackerel/tree/main
+- This [publication site by Andrew Heiss](https://stats.andrewheiss.com/mountainous-mackerel/)
+- And its [repo](https://github.com/andrewheiss/mountainous-mackerel/tree/main)
 
+
+## Repo file tree
+
+```bash
+tree  -L 2 -I '_freeze | zzz_old | renv | docs'
+````
+
+Using [Carbon (code screenshots)](https://carbon.now.sh/)
+
+![](assets/tree.png){width=50%}
 
 ## Quarto
 
@@ -59,6 +69,7 @@ See files in `R/*`:
 - `_fonts.qmd` (how to add fonts)
 - `_parma_colors.qmd` (custom color palette)
 - `issue_renv.md` (problem with `renv` and `gdtools`)
+  - see also some changes added in `assets/COPIA.zshrc.pdf`    
 - `_f_*/.R`  (various functions)
 
 
