@@ -4,8 +4,9 @@
 ## Inspiration
 
 - This [publication site by Andrew Heiss](https://stats.andrewheiss.com/mountainous-mackerel/)
-- And its [repo](https://github.com/andrewheiss/mountainous-mackerel/tree/main)
-
+  - And its [repo](https://github.com/andrewheiss/mountainous-mackerel/tree/main)
+- This [presentation of `targets`](https://www.youtube.com/watch?v=OCFAYFeOQ7w) by Irena Pabst
+- This [book about `targets`](https://carpentries-incubator.github.io/targets-workshop/index.html)
 
 ## Repo file tree
 
