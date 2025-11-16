@@ -1,0 +1,10 @@
+format:
+  revealjs:
+    theme: [default, ../brand/CRP-revealjs.scss]  # Relativo dalla cartella presentations!!!!!
+    logo: ../brand/logo.jpg
+    footer: "Fondazione Cariparma - Osservatorio Dati Sociali | {{< meta date >}}"
+    slide-number: true
+    show-slide-number: all
+    transition: fade
+    background-transition: fade
+    self-contained: true

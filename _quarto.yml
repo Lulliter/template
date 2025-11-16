@@ -7,7 +7,7 @@ project:
     - "**/*.qmd"
     # Exclude specific directories
     - "!zzz_old/"
-
+    # - "!presentations/"
   #   # Don't render anything in the manuscript folder because otherwise all the
   #   # output gets placed in _site/ only, which is annoying. Instead this folder
   #   # needs to be rendered separately, and *before* the overall website project

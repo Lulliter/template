@@ -104,3 +104,21 @@ pre.text {
   color: #ffffff;
   font-size: 0.8em;
 }
+
+// Inline code styling (sovrascrive zephyr in _quarto.yml)
+code {
+  background-color: $gray-200 !important;
+  color: $orange !important;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+// Se vuoi essere più specifico e non toccare i code blocks:
+p code, li code, td code, h1 code, h2 code, h3 code {
+  background-color: $gray-200 !important;
+  color: $orange !important;
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}

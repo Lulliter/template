@@ -4,7 +4,7 @@
     "href": "presentations/index.html",
     "title": "Presentations",
     "section": "",
-    "text": "International Studies Association\n\n\nAnnual conference of the International Studies Association (ISA); Montréal, Canada\n\n\n\n\n\n\nMarch 17, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "IA nelle Fondazioni Bancarie\n\n\n\n\n\n\nLuisa M. Mimmi(con estratti della presentazione di) Fabio Fraticelli\n\n\nNovember 16, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "manuscript/manuscript.html",
@@ -108,5 +108,12 @@
     "title": "Template for Quarto Projects",
     "section": "",
     "text": "This is a template for Quarto projects, including:\n\ndata exploration\nviz/presentation\nmanuscript (as a somewhat independent folder with outputs)\nlots of utility functions & “note-to-self” bits in the ./R/* folder\n\nhow to add a font\nhow to format for word outputs\nrenv setup\netc"
+  },
+  {
+    "objectID": "presentations/01_pres/presentation.html#quarto",
+    "href": "presentations/01_pres/presentation.html#quarto",
+    "title": "IA nelle Fondazioni Bancarie",
+    "section": "Quarto",
+    "text": "Quarto\n\nFootnote 1\naside\nspeakers notes\nlink\nSys.time()\n\n\n\nSpeaker notes go here.\n\n\n\n\nSome additional commentary of more peripheral interest.\nthe footnote text"
   }
 ]

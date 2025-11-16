@@ -1,0 +1,33 @@
+---
+title: "IA nelle Fondazioni Bancarie"
+subtitle: "(Resoconto del corso ACRI)"
+author: "**Luisa M. Mimmi**<br>(con estratti della presentazione di) **Fabio Fraticelli**"
+date: today
+date-format: "DD MMMM YYYY"
+metadata-files:
+  - ../brand/CRP-revealjs-theme.yml
+format: revealjs
+image: ACRI.jpg  # Questa sarà l'anteprima
+execute:
+  echo: true
+  include: true
+  freeze: auto
+---
+
+
+## Quarto
+
+- Footnote ^[the footnote text]
+- aside
+- speakers notes
+- [link](https://quarto.org/docs/presentations/revealjs/advanced.html)
+- `Sys.time()`
+
+::: aside
+Some additional commentary of more peripheral interest.
+:::
+
+::: {.notes}
+Speaker notes go here.
+:::
+
